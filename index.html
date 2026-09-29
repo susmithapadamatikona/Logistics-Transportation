@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NorthLane Logistics · Real-Time Freight, Fleet & Delivery Platform</title>
+  <meta name="description" content="NorthLane Logistics moves freight by road, air, ocean and rail with real-time shipment tracking, intelligent route optimization and a 1,200-vehicle GPS fleet across 45+ countries.">
+  <meta name="theme-color" content="#07111F">
+  <meta property="og:title" content="NorthLane Logistics · Move Faster. Track Smarter. Deliver Better.">
+  <meta property="og:description" content="Technology-driven logistics with live tracking, route optimization and on-time delivery at scale.">
+  <meta property="og:image" content="assets/images/hero/hero-truck-night.jpg">
+  <link rel="preload" as="image" href="assets/images/stackly-logo.webp" fetchpriority="high">
+  <link rel="icon" href="assets/icons/favicon.png" type="image/png">
+  <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/home.css">
+  <link rel="stylesheet" href="css/tracking.css">
+  <link rel="stylesheet" href="css/booking.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <script>document.documentElement.classList.add('nl-loading');try{if(JSON.parse(localStorage.getItem('nl_prefs')||'{}').theme==='light')document.documentElement.setAttribute('data-theme','light')}catch(e){}</script>
+</head>
+<body data-page="home" data-no-announcement>
+  <div id="site-header"></div>
+
+  <main id="main">
+    <!-- ============================ HERO ============================ -->
+    <section class="hero theme-dark" aria-labelledby="heroTitle">
+      <div class="hero-media" aria-hidden="true">
+        <img class="hero-bg-img" src="assets/images/hero/hero-bg.jpg" alt="" fetchpriority="high">
+      </div>
+      <div class="hero-shade" aria-hidden="true"></div>
+
+      <!-- Glowing route network + map pins over the sky -->
+      <svg class="hero-network" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        <defs>
+          <linearGradient id="hnLine" x1="0" x2="1"><stop offset="0" stop-color="#36C5FF" stop-opacity="0"/><stop offset=".5" stop-color="#36C5FF" stop-opacity=".9"/><stop offset="1" stop-color="#36C5FF" stop-opacity="0"/></linearGradient>
+          <linearGradient id="hnGold" x1="0" x2="1"><stop offset="0" stop-color="#FFB000" stop-opacity="0"/><stop offset=".5" stop-color="#FFD166" stop-opacity=".85"/><stop offset="1" stop-color="#FFB000" stop-opacity="0"/></linearGradient>
+          <pattern id="hnDots" width="14" height="14" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.3" fill="#36C5FF" fill-opacity=".35"/></pattern>
+          <radialGradient id="hnMask" cx=".78" cy=".3" r=".38"><stop offset="0" stop-color="#fff"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>
+          <mask id="hnDotMask"><rect width="1440" height="900" fill="url(#hnMask)"/></mask>
+          <filter id="hnGlow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+        </defs>
+        <rect width="1440" height="900" fill="url(#hnDots)" mask="url(#hnDotMask)"/>
+        <g fill="none" stroke-width="2" filter="url(#hnGlow)">
+          <path d="M620 250 Q 760 120 920 170" stroke="url(#hnLine)" stroke-dasharray="6 10" class="hn-flow"/>
+          <path d="M920 170 Q 1060 90 1190 150" stroke="url(#hnGold)" stroke-dasharray="6 10" class="hn-flow slow"/>
+          <path d="M1190 150 Q 1300 230 1380 200" stroke="url(#hnLine)" stroke-dasharray="4 8" class="hn-flow"/>
+          <path d="M920 170 Q 980 300 1110 330" stroke="url(#hnLine)" stroke-dasharray="4 9" class="hn-flow slow"/>
+          <path d="M760 420 Q 900 330 1110 330" stroke="url(#hnGold)" stroke-dasharray="5 9" class="hn-flow"/>
+          <path d="M1110 330 Q 1250 380 1400 330" stroke="url(#hnLine)" stroke-dasharray="4 8" class="hn-flow slow"/>
+        </g>
+        <g class="hn-pins">
+          <g transform="translate(920 170)"><circle r="16" class="hn-halo"/><path d="M0-22c-7 0-12 5-12 12 0 9 12 22 12 22s12-13 12-22c0-7-5-12-12-12z" fill="#FFB000"/><circle cy="-10" r="4.5" fill="#07111F"/></g>
+          <g transform="translate(1190 150)"><circle r="14" class="hn-halo d1"/><path d="M0-19c-6 0-10 4-10 10 0 8 10 19 10 19s10-11 10-19c0-6-4-10-10-10z" fill="#FFB000"/><circle cy="-9" r="3.8" fill="#07111F"/></g>
+          <g transform="translate(1110 330)"><circle r="14" class="hn-halo d2"/><path d="M0-19c-6 0-10 4-10 10 0 8 10 19 10 19s10-11 10-19c0-6-4-10-10-10z" fill="#FFB000"/><circle cy="-9" r="3.8" fill="#07111F"/></g>
+          <g transform="translate(1380 200)"><circle r="10" class="hn-halo d1"/><circle r="5" fill="#36C5FF"/></g>
+          <g transform="translate(620 250)"><circle r="10" class="hn-halo d2"/><circle r="5" fill="#36C5FF"/></g>
+          <g transform="translate(760 420)"><circle r="10" class="hn-halo"/><circle r="5" fill="#36C5FF"/></g>
+        </g>
+      </svg>
+
+      <div class="container hero-inner">
+        <div class="hero-copy">
+          <span class="hero-kicker" data-aos="fade-up">Global Logistics &amp; Transportation</span>
+          <h1 id="heroTitle" data-aos="fade-up" data-aos-delay="80">
+            <span class="line">Move Faster.</span>
+            <span class="line">Track Smarter.</span>
+            <span class="line accent-text">Deliver Better.</span>
+          </h1>
+          <p class="lead" data-aos="fade-up" data-aos-delay="160">Reliable logistics and transportation solutions with real-time shipment visibility, intelligent routing, and seamless delivery management.</p>
+          <div class="hero-actions" data-aos="fade-up" data-aos-delay="240">
+            <a class="btn btn-accent btn-lg" href="404.html">Book a Shipment<i data-icon="arrow-right"></i></a>
+            <a class="btn btn-ghost btn-lg hero-outline" href="404.html"><i data-icon="search"></i>Track Shipment</a>
+          </div>
+        </div>
+
+        <div class="hero-cards" aria-label="Live operations preview">
+          <!-- Driver -->
+          <div class="float-card hc-driver anim-float anim-delay-1" data-aos="fade-up" data-aos-delay="520">
+            <img src="assets/images/drivers/person-1.jpg" alt="">
+            <div><span class="flex xs" style="gap:6px;color:#4ADE80"><span class="live-dot"></span>Driver Online</span><strong>Marcus Reyes</strong></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tracking bar -->
+      <div class="container hero-trackbar-wrap" id="track">
+        <div class="hero-trackbar" data-aos="fade-up" data-aos-delay="200">
+          <div class="htb-head">
+            <div class="htb-title"><span class="icon-box"><i data-icon="package"></i></span><div><h2>Track Your Shipment</h2><p>Enter your tracking ID to get real-time updates</p></div></div>
+            <ul class="htb-features" aria-label="Tracking features">
+              <li><i data-icon="signal"></i>Real-time Tracking</li>
+              <li><i data-icon="shield-check"></i>Secure Delivery</li>
+              <li><i data-icon="headset"></i>24/7 Support</li>
+            </ul>
+          </div>
+          <div class="htb-main">
+            <form class="htb-form js-track-form" data-output="homeTrackResult" role="search" aria-label="Track a shipment">
+              <label for="homeTrackInput" class="sr-only">Tracking ID</label>
+              <div class="input-icon"><i data-icon="search"></i><input id="homeTrackInput" class="input" name="tracking" placeholder="e.g. TRK-2026-45821" autocomplete="off" spellcheck="false"></div>
+              <button class="btn btn-accent" type="submit"><i data-icon="navigation"></i>Track Now</button>
+            </form>
+            <div class="track-samples htb-samples"><span>Try a demo ID:</span>
+              <button type="button" data-sample="TRK-2026-45821">TRK-2026-45821</button>
+              <button type="button" data-sample="TRK-2026-73942">TRK-2026-73942</button>
+              <button type="button" data-sample="TRK-2026-38210">TRK-2026-38210</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tracking results appear here -->
+    <div class="container"><div class="home-track-result" id="homeTrackResult" aria-live="polite"></div></div>
+
+    <!-- ============================ STATS ============================ -->
+    <section class="section-sm" aria-label="NorthLane in numbers">
+      <div class="container">
+        <div class="stats-band" data-aos="fade-up">
+          <div class="stat-cell"><span class="icon-box"><i data-icon="package"></i></span><div class="num"><span data-count="250" data-suffix="K+">0</span></div><p>Shipments Delivered</p></div>
+          <div class="stat-cell"><span class="icon-box accent"><i data-icon="clock"></i></span><div class="num"><span data-count="98.7" data-decimals="1" data-suffix="%">0</span></div><p>On-Time Delivery</p></div>
+          <div class="stat-cell"><span class="icon-box"><i data-icon="truck"></i></span><div class="num"><span data-count="1200" data-suffix="+">0</span></div><p>Vehicles</p></div>
+          <div class="stat-cell"><span class="icon-box"><i data-icon="steering"></i></span><div class="num"><span data-count="850" data-suffix="+">0</span></div><p>Professional Drivers</p></div>
+          <div class="stat-cell"><span class="icon-box accent"><i data-icon="globe"></i></span><div class="num"><span data-count="45" data-suffix="+">0</span></div><p>Countries Served</p></div>
+          <div class="stat-cell"><span class="icon-box success"><i data-icon="headset"></i></span><div class="num">24/7</div><p>Tracking &amp; Support</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ QUICK BOOKING ============================ -->
+    <section class="section" id="quote" aria-labelledby="quoteTitle">
+      <div class="container quick-book">
+        <div data-aos="fade-right">
+          <span class="eyebrow">Instant quote</span>
+          <h2 id="quoteTitle" class="mt-2">Price and book a truck in under a minute</h2>
+          <p class="mt-2">Live lane rates from our dispatch engine — distance, transit time, fuel and tax included. No sales call required.</p>
+          <div class="qb-points">
+            <div class="qb-point"><span class="icon-box"><i data-icon="zap"></i></span><div><h4>Rates in real time</h4><p>Pricing reflects today's fuel index and lane capacity, updated every 15 minutes.</p></div></div>
+            <div class="qb-point"><span class="icon-box accent"><i data-icon="shield-check"></i></span><div><h4>Cargo insured by default</h4><p>Every quote includes transit insurance up to $100,000 per load.</p></div></div>
+            <div class="qb-point"><span class="icon-box success"><i data-icon="route"></i></span><div><h4>Optimized routing</h4><p>Our planner picks the fastest compliant route and a vehicle sized to your freight.</p></div></div>
+          </div>
+        </div>
+        <div class="card card-glass quick-book-form" data-aos="fade-left">
+          <div class="card-head"><h3 class="h3">Quick Shipment Booking</h3><span class="badge badge-accent no-dot">Road freight</span></div>
+          <form id="quickQuoteForm">
+            <div class="form-grid">
+              <div class="field"><label for="qqPickup">Pickup Location <span class="req">*</span></label><input id="qqPickup" class="input" name="pickup" list="cityList" placeholder="Chicago, USA" required value="Chicago, USA"><span class="field-error"></span></div>
+              <div class="field"><label for="qqDelivery">Delivery Location <span class="req">*</span></label><input id="qqDelivery" class="input" name="delivery" list="cityList" placeholder="Dallas, USA" required><span class="field-error"></span></div>
+              <div class="field"><label for="qqPackage">Package Type</label><select id="qqPackage" class="select" name="packageType"><option>Pallet</option><option>Parcel</option><option>Crate</option><option>Fragile Goods</option><option>Perishable</option><option>Hazardous Materials</option><option>Heavy Machinery</option></select></div>
+              <div class="field"><label for="qqPickupDate">Pickup Date <span class="req">*</span></label><input id="qqPickupDate" class="input" type="date" name="pickupDate" data-min-today data-default-offset="1" required><span class="field-error"></span></div>
+              <div class="field"><label for="qqDeliveryDate">Delivery Date</label><input id="qqDeliveryDate" class="input" type="date" name="deliveryDate" data-min-today data-default-offset="3"></div>
+              <div class="field"><label for="qqWeight">Weight (kg) <span class="req">*</span></label><input id="qqWeight" class="input" type="number" name="weight" min="1" value="1200" required><span class="field-error"></span></div>
+              <div class="field"><label for="qqQty">Quantity</label><input id="qqQty" class="input" type="number" name="qty" min="1" value="4"></div>
+              <div class="field"><label for="qqVehicle">Vehicle Type</label><select id="qqVehicle" class="select" name="vehicle"><option>Mini Truck</option><option>Van</option><option>Pickup Truck</option><option selected>Medium Truck</option><option>Heavy Truck</option><option>Container Truck</option><option>Refrigerated Truck</option></select></div>
+              <div class="field"><label for="qqPriority">Delivery Priority</label><select id="qqPriority" class="select" name="priority"><option>Standard</option><option>Express</option><option>Same Day</option><option>Urgent</option></select></div>
+            </div>
+            <button class="btn btn-block btn-lg mt-3" type="submit"><i data-icon="percent"></i>Get Shipping Quote</button>
+          </form>
+          <div class="quote-result" id="quickQuoteResult" aria-live="polite"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ SERVICES ============================ -->
+    <section class="section section-alt" id="services" aria-labelledby="servicesTitle">
+      <div class="container">
+        <div class="section-head-row">
+          <div class="section-head left" data-aos="fade-up">
+            <span class="eyebrow">Transportation services</span>
+            <h2 id="servicesTitle">Every mode. One platform. Full visibility.</h2>
+            <p>From a single pallet to a chartered freighter, every shipment runs on the same tracking, billing and analytics stack.</p>
+          </div>
+          <a class="btn btn-ghost" href="services.html" data-aos="fade-up">View all services<i data-icon="arrow-right"></i></a>
+        </div>
+        <div class="grid grid-4" data-render="services"></div>
+      </div>
+    </section>
+
+    <!-- ============================ LIVE TRACKING PREVIEW ============================ -->
+    <section class="section section-tint" aria-labelledby="liveTitle">
+      <div class="container">
+        <div class="section-head" data-aos="fade-up">
+          <span class="eyebrow">Real-time visibility</span>
+          <h2 id="liveTitle">Watch a shipment move, live</h2>
+          <p>This refrigerated pharma load is travelling from Chicago to Dallas right now. Position, ETA and telemetry refresh every few seconds.</p>
+        </div>
+        <div class="live-preview" data-aos="fade-up">
+          <div class="map-col"><div class="leaflet-holder" id="previewMap" aria-label="Live map of shipment TRK-2026-45821"></div></div>
+          <div class="live-panel" id="previewPanel">
+            <div class="lp-head"><div><span class="xs muted">Shipment</span><h3 class="mono">TRK-2026-45821</h3></div><span class="badge badge-transit" data-live="status">In Transit</span></div>
+            <div class="flex flex-wrap"><span class="live-pill"><span class="live-dot"></span>Live Tracking</span><span class="xs muted" data-live="updated">Updated 10 seconds ago</span></div>
+            <div><div class="progress-label"><span>Chicago, IL → Dallas, TX</span><strong data-live="pctNum">58%</strong></div><div class="progress progress-lg striped"><span data-live="bar" style="width:58%"></span></div></div>
+            <div class="live-kpis">
+              <div><span>ETA</span><strong data-live="etaIn">—</strong></div>
+              <div><span>Distance</span><strong data-live="remaining">—</strong></div>
+              <div><span>Speed</span><strong data-live="speed">68 km/h</strong></div>
+              <div><span>Reefer</span><strong class="text-primary">4.0°C</strong></div>
+            </div>
+            <p class="small"><i data-icon="map-pin" class="text-accent"></i> <span data-live="location">Locating vehicle…</span></p>
+            <div class="live-feed" id="previewFeed" aria-live="off"></div>
+            <a class="btn btn-block" href="404.html"><i data-icon="map"></i>Open full tracking view</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ FLEET SHOWCASE ============================ -->
+    <section class="section" aria-labelledby="fleetTitle">
+      <div class="container">
+        <div class="section-head-row">
+          <div class="section-head left" data-aos="fade-up">
+            <span class="eyebrow">Modern fleet</span>
+            <h2 id="fleetTitle">1,200+ connected vehicles, sized for every load</h2>
+            <p>Average fleet age of 3.2 years. Every unit carries GPS, ELD, dash-cam and — where it matters — reefer telemetry.</p>
+          </div>
+          <div class="rail-controls"><button class="icon-btn" data-rail="-1" aria-label="Scroll fleet left"><i data-icon="chevron-left"></i></button><button class="icon-btn" data-rail="1" aria-label="Scroll fleet right"><i data-icon="chevron-right"></i></button><a class="btn btn-ghost" href="404.html">Explore fleet<i data-icon="arrow-right"></i></a></div>
+        </div>
+        <div class="fleet-rail" id="fleetRail" tabindex="0" aria-label="Fleet vehicle categories"></div>
+      </div>
+    </section>
+
+    <!-- ============================ HOW IT WORKS ============================ -->
+    <section class="section section-alt" aria-labelledby="howTitle">
+      <div class="container">
+        <div class="section-head" data-aos="fade-up">
+          <span class="eyebrow">How it works</span>
+          <h2 id="howTitle">From booking to doorstep in five steps</h2>
+          <p>Every handoff is scanned, time-stamped and visible to you in real time.</p>
+        </div>
+        <div class="process">
+          <div class="process-line" aria-hidden="true">
+            <svg viewBox="0 0 100 6" preserveAspectRatio="none"><defs><linearGradient id="procGrad" x1="0" x2="1"><stop offset="0" stop-color="#00AEEF"/><stop offset="1" stop-color="#FFB000"/></linearGradient></defs><line class="track" x1="0" y1="3" x2="100" y2="3"/><line class="flow" x1="0" y1="3" x2="100" y2="3"/></svg>
+            <span class="pulse"></span>
+          </div>
+          <div class="step" data-aos="fade-up" data-aos-delay="0"><div class="step-icon"><i data-icon="clipboard"></i><span class="step-num">1</span></div><h3>Book Shipment</h3><p>Get an instant quote and book online, by API or through your account manager.</p><span class="step-illu"><i data-icon="clock"></i>60 seconds</span></div>
+          <div class="step" data-aos="fade-up" data-aos-delay="100"><div class="step-icon"><i data-icon="package"></i><span class="step-num">2</span></div><h3>Pickup</h3><p>A vetted driver arrives in your time window and scans every piece at the dock.</p><span class="step-illu"><i data-icon="scan"></i>Barcode scan</span></div>
+          <div class="step" data-aos="fade-up" data-aos-delay="200"><div class="step-icon"><i data-icon="warehouse"></i><span class="step-num">3</span></div><h3>Processing</h3><p>Freight is sorted, consolidated and loaded at the nearest cross-dock hub.</p><span class="step-illu"><i data-icon="repeat"></i>Cross-dock</span></div>
+          <div class="step" data-aos="fade-up" data-aos-delay="300"><div class="step-icon"><i data-icon="truck"></i><span class="step-num">4</span></div><h3>Transportation</h3><p>Line-haul on an optimized route with live GPS, ETA and exception alerts.</p><span class="step-illu"><i data-icon="signal"></i>Live GPS</span></div>
+          <div class="step" data-aos="fade-up" data-aos-delay="400"><div class="step-icon"><i data-icon="check-circle"></i><span class="step-num">5</span></div><h3>Delivery</h3><p>Doorstep delivery with photo and e-signature proof, shared instantly.</p><span class="step-illu"><i data-icon="shield-check"></i>Proof of delivery</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ INDUSTRIES ============================ -->
+    <section class="section" aria-labelledby="indTitle">
+      <div class="container">
+        <div class="section-head-row">
+          <div class="section-head left" data-aos="fade-up">
+            <span class="eyebrow">Industries we serve</span>
+            <h2 id="indTitle">Logistics engineered for your sector</h2>
+            <p>Compliance, handling and delivery models tuned for 15 industries.</p>
+          </div>
+          <a class="btn btn-ghost" href="industries.html" data-aos="fade-up">All industries<i data-icon="arrow-right"></i></a>
+        </div>
+        <div class="grid grid-4">
+          <a class="industry-mini" href="industries.html" data-aos="fade-up"><img src="assets/images/industries/ecommerce.jpg" alt="" loading="lazy"><span class="icon-box"><i data-icon="cart"></i></span><h3>E-Commerce</h3><p>Storefront-connected fulfillment and next-day last mile.</p></a>
+          <a class="industry-mini" href="industries.html" data-aos="fade-up" data-aos-delay="80"><img src="assets/images/industries/pharma.jpg" alt="" loading="lazy"><span class="icon-box"><i data-icon="pill"></i></span><h3>Pharmaceuticals</h3><p>GDP-certified 2–8 °C cold chain with sensor audit trails.</p></a>
+          <a class="industry-mini" href="industries.html" data-aos="fade-up" data-aos-delay="160"><img src="assets/images/industries/automotive.jpg" alt="" loading="lazy"><span class="icon-box"><i data-icon="car"></i></span><h3>Automotive</h3><p>Just-in-time parts with expedited air and road bridges.</p></a>
+          <a class="industry-mini" href="industries.html" data-aos="fade-up" data-aos-delay="240"><img src="assets/images/industries/food.jpg" alt="" loading="lazy"><span class="icon-box"><i data-icon="food"></i></span><h3>Food &amp; Beverage</h3><p>Multi-temperature reefers with FSMA-compliant handling.</p></a>
+          <a class="industry-mini" href="industries.html" data-aos="fade-up"><img src="assets/images/industries/retail.jpg" alt="" loading="lazy"><span class="icon-box"><i data-icon="bag"></i></span><h3>Retail</h3><p>Store replenishment on optimized multi-stop routes.</p></a>
+          <a class="industry-mini" href="industries.html" data-aos="fade-up" data-aos-delay="80"><img src="assets/images/industries/manufacturing.jpg" alt="" loading="lazy"><span class="icon-box"><i data-icon="factory"></i></span><h3>Manufacturing</h3><p>Sequenced milk runs that keep production lines moving.</p></a>
+          <a class="industry-mini" href="industries.html" data-aos="fade-up" data-aos-delay="160"><img src="assets/images/industries/technology.jpg" alt="" loading="lazy"><span class="icon-box"><i data-icon="cpu"></i></span><h3>Technology</h3><p>Secure lanes for high-value electronics and hardware.</p></a>
+          <a class="industry-mini" href="industries.html" data-aos="fade-up" data-aos-delay="240"><img src="assets/images/industries/energy.jpg" alt="" loading="lazy"><span class="icon-box"><i data-icon="zap"></i></span><h3>Energy</h3><p>Project cargo for turbines, transformers and solar arrays.</p></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ ROUTE NETWORK ============================ -->
+    <section class="section section-alt" aria-labelledby="netTitle">
+      <div class="container">
+        <div class="section-head" data-aos="fade-up">
+          <span class="eyebrow">Route network</span>
+          <h2 id="netTitle">Dedicated lanes between 14 North American hubs</h2>
+          <p>Scheduled line-haul departures every day, with optimized relays so freight keeps moving while drivers rest.</p>
+        </div>
+        <div class="network-wrap">
+          <div class="network-map theme-dark" data-aos="fade-right">
+            <svg id="networkSvg" viewBox="0 0 800 470" role="img" aria-label="Schematic map of NorthLane's North American hub-and-lane network"></svg>
+            <div class="nm-legend"><span><i></i>Daily line-haul</span><span><i class="amber"></i>Express lane</span></div>
+          </div>
+          <div class="lane-list" data-aos="fade-left">
+            <div class="lane-row"><strong>Chicago <i data-icon="arrow-right"></i> New York</strong><span class="badge badge-success">98.9%</span><span class="xs muted">1,270 km · 14 departures / day · 17h transit</span></div>
+            <div class="lane-row"><strong>Dallas <i data-icon="arrow-right"></i> Atlanta</strong><span class="badge badge-success">98.6%</span><span class="xs muted">1,250 km · 11 departures / day · 16h transit</span></div>
+            <div class="lane-row"><strong>Los Angeles <i data-icon="arrow-right"></i> Phoenix</strong><span class="badge badge-success">99.1%</span><span class="xs muted">600 km · 18 departures / day · 7h transit</span></div>
+            <div class="lane-row"><strong>Memphis <i data-icon="arrow-right"></i> Chicago</strong><span class="badge badge-warning">96.8%</span><span class="xs muted">850 km · 9 departures / day · 11h transit</span></div>
+            <div class="lane-row"><strong>Atlanta <i data-icon="arrow-right"></i> Miami</strong><span class="badge badge-success">98.2%</span><span class="xs muted">1,060 km · 8 departures / day · 13h transit</span></div>
+            <a class="btn btn-ghost btn-block" href="404.html"><i data-icon="route"></i>Explore road network</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ WHY CHOOSE US ============================ -->
+    <section class="section" aria-labelledby="whyTitle">
+      <div class="container">
+        <div class="section-head" data-aos="fade-up">
+          <span class="eyebrow">Why NorthLane</span>
+          <h2 id="whyTitle">Built for shippers who can't afford surprises</h2>
+        </div>
+        <div class="why-grid">
+          <div class="card card-hover why-card" data-aos="fade-up" data-tilt="6"><span class="icon-box"><i data-icon="signal"></i></span><h3>Real-Time Tracking</h3><p>GPS pings every 30 seconds with predictive ETAs.</p></div>
+          <div class="card card-hover why-card" data-aos="fade-up" data-aos-delay="60" data-tilt="6"><span class="icon-box accent"><i data-icon="zap"></i></span><h3>Fast Delivery</h3><p>Same-day and overnight options on 900+ lanes.</p></div>
+          <div class="card card-hover why-card" data-aos="fade-up" data-aos-delay="120" data-tilt="6"><span class="icon-box"><i data-icon="lock"></i></span><h3>Secure Transportation</h3><p>Geofencing, sealed trailers and C-TPAT compliance.</p></div>
+          <div class="card card-hover why-card" data-aos="fade-up" data-aos-delay="180" data-tilt="6"><span class="icon-box"><i data-icon="steering"></i></span><h3>Experienced Drivers</h3><p>850+ CDL professionals averaging 9 years on the road.</p></div>
+          <div class="card card-hover why-card" data-aos="fade-up" data-aos-delay="240" data-tilt="6"><span class="icon-box accent"><i data-icon="truck"></i></span><h3>Advanced Fleet</h3><p>Late-model trucks, reefers and 204 electric vans.</p></div>
+          <div class="card card-hover why-card" data-aos="fade-up" data-tilt="6"><span class="icon-box"><i data-icon="receipt"></i></span><h3>Transparent Pricing</h3><p>All-in quotes with fuel and tax — no hidden accessorials.</p></div>
+          <div class="card card-hover why-card" data-aos="fade-up" data-aos-delay="60" data-tilt="6"><span class="icon-box success"><i data-icon="headset"></i></span><h3>24/7 Support</h3><p>A human dispatcher answers in under 60 seconds, day or night.</p></div>
+          <div class="card card-hover why-card" data-aos="fade-up" data-aos-delay="120" data-tilt="6"><span class="icon-box"><i data-icon="cpu"></i></span><h3>Technology-Driven</h3><p>AI route planning, digital PODs and open APIs.</p></div>
+          <div class="card card-hover why-card" data-aos="fade-up" data-aos-delay="180" data-tilt="6"><span class="icon-box accent"><i data-icon="shield-check"></i></span><h3>Insurance Coverage</h3><p>Cargo insured up to $100K per load as standard.</p></div>
+          <div class="card card-hover why-card" data-aos="fade-up" data-aos-delay="240" data-tilt="6"><span class="icon-box"><i data-icon="globe"></i></span><h3>Global Network</h3><p>45+ countries, 14 hubs and in-house customs brokerage.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ TESTIMONIALS ============================ -->
+    <section class="section section-alt" aria-labelledby="testiTitle">
+      <div class="container">
+        <div class="section-head" data-aos="fade-up">
+          <span class="eyebrow">Customer stories</span>
+          <h2 id="testiTitle">Trusted by operations teams worldwide</h2>
+        </div>
+        <div class="testimonial-wrap" id="testimonials" data-aos="fade-up">
+          <div class="testimonial-track" aria-live="polite">
+            <figure class="testimonial active">
+              <div class="t-photo"><img src="assets/images/drivers/person-4.jpg" alt="Priya Nair" loading="lazy"><span class="badge badge-accent no-dot">Pharmaceuticals</span></div>
+              <div><i data-icon="quote" class="t-quote"></i><blockquote>“Twelve months, eleven thousand cold-chain loads and not a single reportable excursion. The live reefer telemetry changed how our QA team works.”</blockquote><figcaption><cite><strong>Priya Nair</strong><span>Director of Distribution, Helix Pharma</span></cite></figcaption></div>
+            </figure>
+            <figure class="testimonial" aria-hidden="true">
+              <div class="t-photo"><img src="assets/images/drivers/person-9.jpg" alt="Robert Kline" loading="lazy"><span class="badge badge-accent no-dot">Automotive</span></div>
+              <div><i data-icon="quote" class="t-quote"></i><blockquote>“We went from nine logistics-related line stoppages a quarter to zero. The control tower books expedited capacity before our planners even see the delay.”</blockquote><figcaption><cite><strong>Robert Kline</strong><span>VP Supply Chain, Kestrel Motors</span></cite></figcaption></div>
+            </figure>
+            <figure class="testimonial" aria-hidden="true">
+              <div class="t-photo"><img src="assets/images/drivers/person-10.jpg" alt="Mei Tanaka" loading="lazy"><span class="badge badge-accent no-dot">E-Commerce</span></div>
+              <div><i data-icon="quote" class="t-quote"></i><blockquote>“Next-day on-time jumped to 97.6% during our busiest peak ever. Customers love the live ETA link — support tickets about ‘where is my order’ fell by half.”</blockquote><figcaption><cite><strong>Mei Tanaka</strong><span>Head of Fulfillment, Orbit Commerce</span></cite></figcaption></div>
+            </figure>
+          </div>
+          <div class="t-controls">
+            <button class="icon-btn" id="tPrev" aria-label="Previous testimonial"><i data-icon="chevron-left"></i></button>
+            <div class="t-dots" id="tDots"></div>
+            <button class="icon-btn" id="tNext" aria-label="Next testimonial"><i data-icon="chevron-right"></i></button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ CASE STUDIES ============================ -->
+    <section class="section" aria-labelledby="caseTitle">
+      <div class="container">
+        <div class="section-head-row">
+          <div class="section-head left" data-aos="fade-up">
+            <span class="eyebrow">Case studies</span>
+            <h2 id="caseTitle">Measured results, not promises</h2>
+          </div>
+          <a class="btn btn-ghost" href="404.html" data-aos="fade-up">All case studies<i data-icon="arrow-right"></i></a>
+        </div>
+        <div class="grid grid-3" data-render="cases" data-limit="3"></div>
+      </div>
+    </section>
+
+    <!-- ============================ NEWS ============================ -->
+    <section class="section section-alt" aria-labelledby="newsTitle">
+      <div class="container">
+        <div class="section-head-row">
+          <div class="section-head left" data-aos="fade-up">
+            <span class="eyebrow">Latest logistics news</span>
+            <h2 id="newsTitle">Insights from the road</h2>
+          </div>
+          <a class="btn btn-ghost" href="404.html" data-aos="fade-up">Read the blog<i data-icon="arrow-right"></i></a>
+        </div>
+        <div class="grid grid-3" data-render="posts" data-limit="3"></div>
+      </div>
+    </section>
+
+    <!-- ============================ CTA + NEWSLETTER ============================ -->
+    <section class="section" aria-labelledby="ctaTitle">
+      <div class="container">
+        <div class="cta-band theme-dark" data-aos="zoom-in">
+          <img class="bg-img" src="assets/images/backgrounds/port-aerial.jpg" alt="" loading="lazy">
+          <div class="cta-inner">
+            <div>
+              <span class="eyebrow">Ready when you are</span>
+              <h2 id="ctaTitle" class="mt-2">Ship your first load with NorthLane this week</h2>
+              <p>Get a dedicated onboarding specialist, 30 days of free premium tracking and your first quote in under a minute.</p>
+            </div>
+            <div class="flex flex-wrap">
+              <a class="btn btn-accent btn-lg" href="404.html"><i data-icon="package"></i>Book a Shipment</a>
+              <a class="btn btn-ghost btn-lg" href="404.html"><i data-icon="phone"></i>Talk to Sales</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="newsletter-band mt-4" data-aos="fade-up">
+          <div><h3>The NorthLane Freight Brief</h3><p class="mt-1">Weekly lane rates, capacity outlook and logistics news. 18,000 supply-chain leaders read it every Tuesday.</p></div>
+          <form class="newsletter-form js-newsletter" aria-label="Newsletter signup">
+            <label for="nlEmail" class="sr-only">Email address</label>
+            <input id="nlEmail" class="input" type="email" placeholder="you@company.com" autocomplete="email">
+            <button class="btn" type="submit">Subscribe</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js" defer></script>
+  <script src="js/icons.js" defer></script>
+  <script src="js/data.js" defer></script>
+  <script src="js/notifications.js" defer></script>
+  <script src="js/navbar.js" defer></script>
+  <script src="js/animations.js" defer></script>
+  <script src="js/charts.js" defer></script>
+  <script src="js/components.js" defer></script>
+  <script src="js/tracking.js" defer></script>
+  <script src="js/calculator.js" defer></script>
+  <script src="js/booking.js" defer></script>
+  <script src="js/home.js" defer></script>
+  <script src="js/main.js" defer></script>
+</body>
+</html>

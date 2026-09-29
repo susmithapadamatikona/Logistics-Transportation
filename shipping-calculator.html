@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Shipping Calculator · Instant Freight Rates | NorthLane Logistics</title>
+  <meta name="description" content="Calculate shipping costs for road, air, ocean and rail freight. Instant distance, transit time, fuel surcharge, insurance and tax for any lane.">
+  <meta name="theme-color" content="#07111F">
+  <meta property="og:title" content="Shipping Calculator · Instant Freight Rates | NorthLane Logistics">
+  <meta property="og:description" content="Calculate shipping costs for road, air, ocean and rail freight. Instant distance, transit time, fuel surcharge, insurance and tax for any lane.">
+  <meta property="og:image" content="assets/images/hero/hero-truck-night.jpg">
+  <link rel="preload" as="image" href="assets/images/stackly-logo.webp" fetchpriority="high">
+  <link rel="icon" href="assets/icons/favicon.png" type="image/png">
+  <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/booking.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <script>document.documentElement.classList.add('nl-loading');try{if(JSON.parse(localStorage.getItem('nl_prefs')||'{}').theme==='light')document.documentElement.setAttribute('data-theme','light')}catch(e){}</script>
+</head>
+<body data-page="calculator">
+<div id="site-header"></div>
+
+  <main id="main">
+    <section class="page-hero theme-dark" aria-labelledby="pageTitle">
+      <img class="bg-img" src="assets/images/logistics/port-cranes.jpg" alt="">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="Breadcrumb"><a href="index.html">Home</a><i data-icon="chevron-right"></i><span aria-current="page">Shipping Calculator</span></nav>
+        <h1 id="pageTitle">Shipping cost calculator</h1>
+        <p class="lead">Compare road, air, ocean and rail in seconds. Every estimate includes fuel surcharge, handling, insurance and tax — the same engine our dispatch team uses.</p>
+      </div>
+    </section>
+
+    <section class="section-sm">
+      <div class="container calc-shell">
+        <form class="card" id="calcForm" aria-labelledby="calcFormTitle">
+          <div class="card-head"><h2 class="h3" id="calcFormTitle">Shipment details</h2><span class="badge badge-primary no-dot">Live pricing</span></div>
+          <div class="form-grid">
+            <div class="field"><label for="cOrigin">Origin <span class="req">*</span></label><div class="input-icon"><i data-icon="map-pin"></i><input id="cOrigin" class="input" name="origin" list="cityList" value="Chicago, USA" required></div><span class="field-error"></span></div>
+            <div class="field"><label for="cDest">Destination <span class="req">*</span></label><div class="input-icon"><i data-icon="flag"></i><input id="cDest" class="input" name="destination" list="cityList" value="Dallas, USA" required></div><span class="field-error"></span></div>
+            <div class="field full" style="margin-top:-6px"><button type="button" class="btn btn-ghost btn-xs" id="swapCities" style="width:fit-content"><i data-icon="repeat"></i>Swap origin &amp; destination</button></div>
+            <div class="field"><label for="cPkg">Package Type</label><select id="cPkg" class="select" name="packageType"><option>Pallet</option><option>Parcel</option><option>Documents</option><option>Crate</option><option>Fragile Goods</option><option>Perishable</option><option>Hazardous Materials</option><option>Heavy Machinery</option><option>Container (FCL)</option></select></div>
+            <div class="field"><label for="cWeight">Weight per unit (kg) <span class="req">*</span></label><input id="cWeight" class="input" type="number" name="weight" min="0.1" step="0.1" value="450" required><span class="field-error"></span></div>
+            <div class="field"><label>Dimensions per unit (cm)</label><div class="dims-row"><input class="input" type="number" name="l" min="0" value="120" aria-label="Length in cm" placeholder="L"><input class="input" type="number" name="w" min="0" value="100" aria-label="Width in cm" placeholder="W"><input class="input" type="number" name="h" min="0" value="140" aria-label="Height in cm" placeholder="H"></div></div>
+            <div class="field"><label for="cQty">Quantity</label><input id="cQty" class="input" type="number" name="qty" min="1" value="6"></div>
+          </div>
+
+          <h3 class="bk-sub"><i data-icon="route"></i>Transportation mode</h3>
+          <div class="option-grid mode-tiles" role="radiogroup" aria-label="Transportation mode">
+            <label class="option-tile"><input type="radio" name="mode" value="road" checked><span class="tile"><i data-icon="truck"></i><strong>Road</strong><span>Door-to-door trucking</span></span></label>
+            <label class="option-tile"><input type="radio" name="mode" value="air"><span class="tile"><i data-icon="plane"></i><strong>Air</strong><span>Fastest, time-critical</span></span></label>
+            <label class="option-tile"><input type="radio" name="mode" value="ocean"><span class="tile"><i data-icon="ship"></i><strong>Ocean</strong><span>Lowest cost per tonne</span></span></label>
+            <label class="option-tile"><input type="radio" name="mode" value="rail"><span class="tile"><i data-icon="train"></i><strong>Rail</strong><span>Heavy &amp; low-carbon</span></span></label>
+          </div>
+
+          <h3 class="bk-sub"><i data-icon="zap"></i>Delivery speed</h3>
+          <div class="option-grid speed-tiles" role="radiogroup" aria-label="Delivery speed">
+            <label class="option-tile"><input type="radio" name="speed" value="Standard" checked><span class="tile"><strong>Standard</strong><span>Best value</span></span></label>
+            <label class="option-tile"><input type="radio" name="speed" value="Express"><span class="tile"><strong>Express</strong><span>~28% faster</span></span></label>
+            <label class="option-tile"><input type="radio" name="speed" value="Same Day"><span class="tile"><strong>Same Day</strong><span>Road &lt; 650 km</span></span></label>
+            <label class="option-tile"><input type="radio" name="speed" value="Urgent"><span class="tile"><strong>Urgent</strong><span>Dedicated capacity</span></span></label>
+          </div>
+
+          <div class="form-grid mt-3">
+            <div class="field"><label class="switch"><input type="checkbox" name="insurance" checked><span class="track"></span>Add cargo insurance</label><span class="field-hint">0.6% of declared value, minimum $15.</span></div>
+            <div class="field"><label for="cDeclared">Declared value (USD)</label><input id="cDeclared" class="input" type="number" name="declared" min="0" value="48000"></div>
+          </div>
+          <button class="btn btn-lg btn-block mt-3" type="submit"><i data-icon="percent"></i>Calculate Shipping Cost</button>
+          <p class="calc-note"><i data-icon="info"></i>Estimates use today's fuel index and published lane rates. Final pricing is confirmed at booking and may vary with accessorial services.</p>
+        </form>
+
+        <aside class="card calc-result-card" aria-live="polite" aria-labelledby="calcResTitle">
+          <div class="card-head"><h2 class="h3" id="calcResTitle">Your estimate</h2><span class="live-pill"><span class="live-dot"></span>Real time</span></div>
+          <div id="calcResult"></div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section-sm" style="padding-top:0">
+      <div class="container">
+        <div class="card">
+          <div class="card-head"><div><h2 class="h3">Compare transportation modes</h2><span class="xs muted">Same shipment, every mode. CO₂ estimated per GLEC framework averages.</span></div></div>
+          <div class="table-wrap" style="border:0">
+            <table class="table">
+              <caption class="sr-only">Cost, time and emissions by transportation mode</caption>
+              <thead><tr><th scope="col">Mode</th><th scope="col">Distance</th><th scope="col">Transit time</th><th scope="col">Est. CO₂</th><th scope="col">Total cost</th><th scope="col"><span class="sr-only">Action</span></th></tr></thead>
+              <tbody id="compareBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js" defer></script>
+  <script src="js/icons.js" defer></script>
+  <script src="js/data.js" defer></script>
+  <script src="js/notifications.js" defer></script>
+  <script src="js/navbar.js" defer></script>
+  <script src="js/animations.js" defer></script>
+  <script src="js/calculator.js" defer></script>
+  <script src="js/main.js" defer></script>
+</body>
+</html>

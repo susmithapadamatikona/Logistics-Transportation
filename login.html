@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Login | NorthLane Logistics Customer Portal</title>
+  <meta name="description" content="Sign in to the NorthLane portal to book, track and manage shipments, invoices, fleet and deliveries.">
+  <meta name="theme-color" content="#07111F">
+  <meta property="og:title" content="Login | NorthLane Logistics Customer Portal">
+  <meta property="og:description" content="Sign in to the NorthLane portal to book, track and manage shipments, invoices, fleet and deliveries.">
+  <meta property="og:image" content="assets/images/hero/hero-truck-night.jpg">
+  <meta name="robots" content="noindex">
+  <link rel="preload" as="image" href="assets/images/stackly-logo.webp" fetchpriority="high">
+  <link rel="icon" href="assets/icons/favicon.png" type="image/png">
+  <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/auth.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <script>document.documentElement.classList.add('nl-loading');try{if(JSON.parse(localStorage.getItem('nl_prefs')||'{}').theme==='light')document.documentElement.setAttribute('data-theme','light')}catch(e){}</script>
+</head>
+<body data-page="login" data-layout="auth">
+<main id="main" class="auth">
+    <aside class="auth-visual" aria-hidden="true">
+      <img src="assets/images/hero/truck-sunset.jpg" alt="">
+      <a class="brand" href="index.html" tabindex="-1"><span data-brand></span></a>
+      <div>
+        <h2>Every shipment, every truck, one login.</h2>
+        <p>Book freight, follow your trucks live and download invoices and PODs from a single secure portal.</p>
+        <div class="auth-cards">
+          <div class="float-card anim-float"><div class="flex-between"><span class="mono" style="color:#fff">TRK-2026-45821</span><span class="badge badge-transit">In Transit</span></div><div class="progress striped mt-2"><span style="width:58%"></span></div><div class="flex-between mt-2 xs"><span style="color:#91A4B5">Chicago → Dallas</span><strong style="color:#FFB000">ETA 10h 20m</strong></div></div>
+          <div class="float-card anim-float anim-delay-2" style="margin-left:40px"><div class="flex"><span class="live-dot"></span><strong style="color:#fff">1,184 vehicles online</strong></div><span class="xs" style="color:#91A4B5">98.7% on-time across the network this month</span></div>
+        </div>
+      </div>
+      <div class="auth-quote"><img src="assets/images/drivers/person-4.jpg" alt=""><span>“The live tracking changed how our QA team works.” — Priya Nair, Helix Pharma</span></div>
+    </aside>
+    <section class="auth-panel">
+      <div class="auth-top"><a class="brand" href="index.html" aria-label="Stackly home"><span data-brand></span></a><div class="flex"><a class="btn btn-ghost btn-sm" href="index.html"><i data-icon="arrow-left"></i>Website</a></div></div>
+      <div class="auth-box">
+        <div class="auth-card">
+          <span class="eyebrow">Welcome back</span>
+          <h1 class="mt-2">Log in to NorthLane</h1>
+          <p>Access your shipments, fleet and invoices.</p>
+          <div class="notice hidden mb-2" id="loggedInNote"><i data-icon="info"></i><span></span></div>
+          <form id="loginForm" class="stack-form" aria-label="Login">
+            <div class="field"><label for="lRole">Select Role <span class="req">*</span></label><div class="input-icon"><i data-icon="users"></i><select id="lRole" class="select" name="role" required data-msg="Please select your role."><option value="">Select your role</option><option value="customer">Customer</option><option value="business">Business</option><option value="driver">Driver</option><option value="fleet">Fleet Manager</option><option value="admin">Admin</option></select></div><span class="field-error"></span></div>
+            <div class="field"><label for="lEmail">Email</label><div class="input-icon"><i data-icon="mail"></i><input id="lEmail" class="input" type="email" name="email" required autocomplete="email" placeholder="you@company.com"></div><span class="field-error"></span></div>
+            <div class="field"><label for="lPass">Password</label><div class="input-icon"><i data-icon="lock"></i><input id="lPass" class="input" type="password" name="password" required autocomplete="current-password" placeholder="••••••••"><button type="button" class="toggle-pass" aria-label="Show password"></button></div><span class="field-error"></span></div>
+            <div class="auth-row"><label class="check"><input type="checkbox" name="remember" checked>Remember me</label><a href="404.html">Forgot password?</a></div>
+            <button class="btn btn-lg btn-block" type="submit"><i data-icon="login"></i>Login</button>
+          </form>
+          <div class="or-divider">or continue with</div>
+          <div class="social-row"><button type="button" class="social-btn" data-social="Google"><span class="g">G</span>Google</button><button type="button" class="social-btn" data-social="Microsoft"><i data-icon="grid"></i>Microsoft</button><button type="button" class="social-btn" data-social="LinkedIn"><i data-icon="linkedin"></i>LinkedIn</button></div>
+          <p class="auth-foot">New to NorthLane? <a href="register.html">Create an account</a></p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/icons.js" defer></script>
+  <script src="js/data.js" defer></script>
+  <script src="js/notifications.js" defer></script>
+  <script src="js/navbar.js" defer></script>
+  <script src="js/animations.js" defer></script>
+  <script src="js/auth.js" defer></script>
+  <script src="js/main.js" defer></script>
+</body>
+</html>

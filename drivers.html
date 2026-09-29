@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Professional Drivers · Driver Management | NorthLane Logistics</title>
+  <meta name="description" content="Meet NorthLane&#x27;s certified professional drivers: live status, vehicles, deliveries completed, ratings, experience and team performance analytics.">
+  <meta name="theme-color" content="#07111F">
+  <meta property="og:title" content="Professional Drivers · Driver Management | NorthLane Logistics">
+  <meta property="og:description" content="Meet NorthLane&#x27;s certified professional drivers: live status, vehicles, deliveries completed, ratings, experience and team performance analytics.">
+  <meta property="og:image" content="assets/images/fleet/driver-cab.jpg">
+  <link rel="preload" as="image" href="assets/images/stackly-logo.webp" fetchpriority="high">
+  <link rel="icon" href="assets/icons/favicon.png" type="image/png">
+  <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/fleet.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <script>document.documentElement.classList.add('nl-loading');try{if(JSON.parse(localStorage.getItem('nl_prefs')||'{}').theme==='light')document.documentElement.setAttribute('data-theme','light')}catch(e){}</script>
+</head>
+<body data-page="drivers">
+<div id="site-header"></div>
+
+  <main id="main">
+    <section class="page-hero theme-dark" aria-labelledby="pageTitle">
+      <img class="bg-img" src="assets/images/fleet/driver-cab.jpg" alt="" data-parallax="0.15">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="Breadcrumb"><a href="index.html">Home</a><i data-icon="chevron-right"></i><a href="fleet.html">Fleet</a><i data-icon="chevron-right"></i><span aria-current="page">Drivers</span></nav>
+        <span class="eyebrow mt-3">Driver management</span>
+        <h1 id="pageTitle">850+ professionals behind the wheel</h1>
+        <p class="lead">Certified, experienced and supported by technology that plans safe, legal routes — so your freight arrives on time and our drivers get home on time.</p>
+        <div class="hero-meta"><div><strong><span data-count="850" data-suffix="+">0</span></strong><span>CDL drivers</span></div><div><strong>9 yrs</strong><span>Average experience</span></div><div><strong><span data-count="4.8" data-decimals="1">0</span>★</strong><span>Average rating</span></div><div><strong>14%</strong><span>Annual turnover</span></div></div>
+      </div>
+    </section>
+
+    <section class="section-sm" aria-labelledby="dirTitle">
+      <div class="container">
+        <h2 class="sr-only" id="dirTitle">Driver directory</h2>
+        <div class="status-summary" id="driverSummary" role="group" aria-label="Filter drivers by status" style="grid-template-columns:repeat(5,1fr)"></div>
+        <div class="toolbar">
+          <div class="input-icon"><i data-icon="search"></i><label for="driverSearch" class="sr-only">Search drivers</label><input id="driverSearch" class="input" placeholder="Search by name, driver ID, city or vehicle…"></div>
+          <label for="driverSort" class="sr-only">Sort drivers</label>
+          <select id="driverSort" class="select"><option value="rating">Sort: Highest rated</option><option value="deliveries">Most deliveries</option><option value="experience">Most experienced</option><option value="ontime">Best on-time rate</option><option value="name">Name A–Z</option></select>
+          <span class="result-count" id="driverCount" aria-live="polite"></span>
+        </div>
+        <div class="driver-grid" id="driverGrid"></div>
+        <div class="pagination" id="driverPager" aria-label="Driver pages"></div>
+      </div>
+    </section>
+
+    <section class="section section-alt" aria-labelledby="perfTitle">
+      <div class="container">
+        <div class="section-head" data-aos="fade-up"><span class="eyebrow">Driver performance</span><h2 id="perfTitle">Team performance at a glance</h2></div>
+        <div class="grid" style="grid-template-columns:minmax(0,1.4fr) minmax(0,1fr)" id="drvChartsGrid">
+          <div class="card" data-aos="fade-up"><div class="card-head"><div><h3 class="h3">Top drivers by deliveries</h3><span class="xs muted">Lifetime completed deliveries</span></div></div><div class="chart-box lg"><canvas id="drvTop" role="img" aria-label="Horizontal bar chart of the eight drivers with most deliveries"></canvas></div></div>
+          <div class="stack">
+            <div class="card" data-aos="fade-up" data-aos-delay="80"><div class="card-head"><h3 class="h3">Leaderboard · this month</h3><span class="badge badge-accent no-dot">On-time × rating</span></div><ol class="leaderboard" id="leaderboard"></ol></div>
+          </div>
+          <div class="card" data-aos="fade-up"><div class="card-head"><div><h3 class="h3">Team on-time delivery rate</h3><span class="xs muted">Trailing 12 months</span></div></div><div class="chart-box"><canvas id="drvTrend" role="img" aria-label="Line chart of team on-time rate rising from 95.8% to 98.4%"></canvas></div></div>
+          <div class="card" data-aos="fade-up" data-aos-delay="80"><div class="card-head"><div><h3 class="h3">Driver status</h3><span class="xs muted">Right now</span></div></div><div class="chart-box"><canvas id="drvStatus" role="img" aria-label="Doughnut chart of drivers by status"></canvas></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-sm">
+      <div class="container">
+        <div class="cta-band theme-dark" data-aos="zoom-in">
+          <img class="bg-img" src="assets/images/trucks/long-haul-truck.jpg" alt="" loading="lazy">
+          <div class="cta-inner"><div><h2>Drive with NorthLane</h2><p>Home-time guarantees, modern trucks and pay that rewards safe driving. Apply in 10 minutes.</p></div><div class="flex flex-wrap"><a class="btn btn-accent btn-lg" href="register.html"><i data-icon="steering"></i>Apply to drive</a><a class="btn btn-ghost btn-lg" href="driver-dashboard.html">Driver app preview</a></div></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js" defer></script>
+  <script src="js/icons.js" defer></script>
+  <script src="js/data.js" defer></script>
+  <script src="js/notifications.js" defer></script>
+  <script src="js/navbar.js" defer></script>
+  <script src="js/animations.js" defer></script>
+  <script src="js/charts.js" defer></script>
+  <script src="js/fleet.js" defer></script>
+  <script src="js/drivers.js" defer></script>
+  <script src="js/main.js" defer></script>
+</body>
+</html>

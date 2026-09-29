@@ -1,0 +1,90 @@
+/* ==========================================================================
+   NorthLane Logistics — Fleet & driver management
+   ========================================================================== */
+
+.status-summary { display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; margin-bottom: 26px; }
+.status-pill { display: flex; flex-direction: column; gap: 4px; padding: 16px 18px; border-radius: 16px; background: var(--surface); border: 1px solid var(--line); text-align: left; transition: var(--t); position: relative; overflow: hidden; }
+.status-pill::after { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--c, var(--primary)); }
+.status-pill:hover { transform: translateY(-3px); border-color: var(--c, var(--primary)); }
+.status-pill.active { border-color: var(--c, var(--primary)); box-shadow: 0 0 0 1px var(--c, var(--primary)), var(--shadow); }
+.status-pill strong { font-family: var(--font-display); font-size: 1.6rem; line-height: 1.1; }
+.status-pill span { font-size: .8rem; color: var(--muted); display: flex; align-items: center; gap: 6px; }
+.status-pill span::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--c, var(--primary)); }
+
+.view-toggle { display: inline-flex; padding: 4px; border-radius: 12px; border: 1px solid var(--line); background: var(--input-bg); }
+.view-toggle button { width: 40px; height: 38px; border-radius: 9px; display: grid; place-items: center; color: var(--muted); }
+.view-toggle button svg { width: 18px; height: 18px; }
+.view-toggle button.active { background: var(--primary); color: #fff; }
+
+/* Vehicle card */
+.vehicle-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+.veh-card { padding: 22px; display: flex; flex-direction: column; gap: 16px; }
+.veh-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
+.veh-id { display: flex; gap: 12px; align-items: center; }
+.veh-id .icon-box { width: 48px; height: 48px; border-radius: 14px; }
+.veh-id strong { display: block; font-family: var(--font-alt); font-size: 1.02rem; letter-spacing: .02em; }
+.veh-id span { font-size: .8rem; color: var(--muted); }
+.veh-meta { display: grid; grid-template-columns: 1fr 1fr; gap: 12px 16px; font-size: .84rem; }
+.veh-meta div span { display: block; font-size: .68rem; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); font-weight: 700; margin-bottom: 2px; }
+.veh-meta div strong { font-size: .88rem; font-weight: 600; }
+.fuel { display: flex; align-items: center; gap: 10px; font-size: .8rem; }
+.fuel .progress { flex: 1; height: 7px; }
+.fuel svg { width: 16px; height: 16px; color: var(--muted); }
+.veh-foot { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding-top: 14px; border-top: 1px solid var(--line); margin-top: auto; }
+.veh-driver { display: flex; gap: 10px; align-items: center; font-size: .84rem; min-width: 0; }
+.veh-driver img, .veh-driver .avatar { width: 32px; height: 32px; }
+.veh-driver span { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.service-due { color: var(--warning); font-weight: 600; }
+
+/* Driver card */
+.driver-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; }
+.drv-card { padding: 0; overflow: hidden; text-align: center; display: flex; flex-direction: column; }
+.drv-cover { height: 74px; background: var(--transport-gradient); position: relative; opacity: .9; }
+.drv-cover::after { content: ""; position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,.08) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.08) 1px, transparent 1px); background-size: 16px 16px; }
+.drv-photo { position: relative; width: 92px; height: 92px; margin: -46px auto 0; }
+.drv-photo img, .drv-photo .avatar { width: 92px; height: 92px; border: 4px solid var(--surface); box-shadow: var(--shadow-sm); font-size: 1.4rem; }
+.drv-photo .dot { position: absolute; right: 6px; bottom: 6px; width: 18px; height: 18px; border-radius: 50%; border: 3px solid var(--surface); background: var(--muted); }
+.drv-photo .dot.online { background: var(--success); }
+.drv-photo .dot.on-delivery { background: var(--primary); }
+.drv-photo .dot.break { background: var(--warning); }
+.drv-body { padding: 14px 20px 20px; display: flex; flex-direction: column; flex: 1; }
+.drv-body h3 { font-size: 1.05rem; }
+.drv-body .drv-id { font-size: .78rem; color: var(--muted); }
+.drv-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin: 16px 0; }
+.drv-stats div { padding: 10px 4px; border-radius: 12px; background: var(--input-bg); border: 1px solid var(--line); }
+.drv-stats strong { display: block; font-family: var(--font-display); font-size: 1.05rem; }
+.drv-stats span { font-size: .68rem; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; font-weight: 700; }
+.drv-info { display: grid; gap: 6px; font-size: .82rem; text-align: left; margin-bottom: 16px; }
+.drv-info div { display: flex; gap: 8px; align-items: center; color: var(--text); }
+.drv-info svg { width: 15px; height: 15px; color: var(--primary); flex-shrink: 0; }
+.drv-actions { display: flex; gap: 8px; margin-top: auto; }
+.drv-actions .btn { flex: 1; }
+
+/* Profile modal */
+.profile-head { display: flex; gap: 18px; align-items: center; margin-bottom: 20px; }
+.profile-head img, .profile-head .avatar { width: 84px; height: 84px; font-size: 1.4rem; }
+.leaderboard li { display: grid; grid-template-columns: 26px 40px 1fr auto; gap: 12px; align-items: center; padding: 10px 0; border-bottom: 1px solid var(--line-soft); font-size: .88rem; }
+.leaderboard li:last-child { border-bottom: 0; }
+.leaderboard .rank { font-family: var(--font-display); font-weight: 700; color: var(--muted); }
+.leaderboard li:nth-child(1) .rank { color: var(--accent); }
+.leaderboard img, .leaderboard .avatar { width: 40px; height: 40px; }
+
+@media (max-width: 1100px) {
+  .status-summary { grid-template-columns: repeat(3, 1fr); }
+  .vehicle-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .driver-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (max-width: 720px) {
+  .status-summary { grid-template-columns: repeat(2, 1fr); }
+  .vehicle-grid { grid-template-columns: 1fr; }
+  .driver-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  .drv-body { padding: 12px 12px 14px; }
+  .drv-stats strong { font-size: .95rem; }
+  .drv-actions { flex-direction: column; }
+}
+@media (max-width: 420px) { .driver-grid { grid-template-columns: 1fr; } }
+@media (max-width: 960px) {
+  #fleetChartsGrid, #drvChartsGrid { grid-template-columns: 1fr !important; }
+  #driverSummary { grid-template-columns: repeat(3, 1fr) !important; }
+}
+@media (max-width: 560px) { #driverSummary { grid-template-columns: repeat(2, 1fr) !important; } }

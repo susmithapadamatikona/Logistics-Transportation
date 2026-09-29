@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Shipment Details | NorthLane Logistics</title>
+  <meta name="description" content="Full shipment details: status, origin and destination, package information, driver and vehicle, documents and an animated delivery timeline.">
+  <meta name="theme-color" content="#07111F">
+  <meta property="og:title" content="Shipment Details | NorthLane Logistics">
+  <meta property="og:description" content="Full shipment details: status, origin and destination, package information, driver and vehicle, documents and an animated delivery timeline.">
+  <meta property="og:image" content="assets/images/hero/hero-truck-night.jpg">
+  <meta name="robots" content="noindex">
+  <link rel="preload" as="image" href="assets/images/stackly-logo.webp" fetchpriority="high">
+  <link rel="icon" href="assets/icons/favicon.png" type="image/png">
+  <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/tracking.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <script>document.documentElement.classList.add('nl-loading');try{if(JSON.parse(localStorage.getItem('nl_prefs')||'{}').theme==='light')document.documentElement.setAttribute('data-theme','light')}catch(e){}</script>
+</head>
+<body data-page="shipment-details" class="page-solid-header">
+<div id="site-header"></div>
+
+  <main id="main" class="section-sm">
+    <div class="container">
+      <nav class="breadcrumb mb-3" aria-label="Breadcrumb"><a href="index.html">Home</a><i data-icon="chevron-right"></i><a href="tracking.html">Tracking</a><i data-icon="chevron-right"></i><span aria-current="page">Shipment Details</span></nav>
+      <div id="shipmentDetails" aria-live="polite">
+        <div class="card"><div class="skeleton" style="height:28px;width:40%"></div><div class="skeleton" style="height:14px;margin-top:20px"></div><div class="skeleton" style="height:220px;margin-top:20px"></div></div>
+      </div>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js" defer></script>
+  <script src="js/icons.js" defer></script>
+  <script src="js/data.js" defer></script>
+  <script src="js/notifications.js" defer></script>
+  <script src="js/navbar.js" defer></script>
+  <script src="js/animations.js" defer></script>
+  <script src="js/tracking.js" defer></script>
+  <script src="js/main.js" defer></script>
+</body>
+</html>

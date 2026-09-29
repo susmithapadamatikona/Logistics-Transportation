@@ -1,0 +1,92 @@
+/* ==========================================================================
+   NorthLane Logistics — Booking flow, calendar & shipping calculator
+   ========================================================================== */
+
+/* ---------- Stepper ---------- */
+.bk-shell { display: grid; grid-template-columns: minmax(0, 1fr) 340px; gap: 28px; align-items: start; }
+.bk-progress-wrap { position: relative; margin-bottom: 30px; }
+.bk-progress { display: grid; grid-template-columns: repeat(6, 1fr); position: relative; z-index: 1; }
+.bk-progress li { text-align: center; font-size: .78rem; font-weight: 600; color: var(--muted); cursor: default; }
+.bk-progress li.done { cursor: pointer; }
+.bk-progress li span { width: 42px; height: 42px; margin: 0 auto 10px; border-radius: 14px; display: grid; place-items: center; background: var(--surface); border: 2px solid var(--line); color: var(--muted); transition: .4s var(--ease); font-family: var(--font-display); font-weight: 700; }
+.bk-progress li span svg { width: 18px; height: 18px; }
+.bk-progress li.done span { background: var(--primary); border-color: var(--primary); color: #fff; }
+.bk-progress li.current span { border-color: var(--accent); color: var(--accent); box-shadow: 0 0 0 6px rgba(255,176,0,.14); }
+.bk-progress li.done, .bk-progress li.current { color: var(--heading); }
+.bk-track { position: absolute; top: 20px; left: calc(100% / 12); right: calc(100% / 12); height: 3px; background: var(--line); border-radius: 3px; overflow: hidden; }
+.bk-track i { display: block; height: 100%; width: 0; background: var(--transport-gradient); transition: width .6s var(--ease); }
+.bk-step { display: none; }
+.bk-step.active { display: block; animation: fadeUp .5s var(--ease); }
+.bk-step h2 { font-size: 1.45rem; margin-bottom: 6px; outline: none; }
+.bk-step > p { margin-bottom: 24px; }
+.bk-sub { font-family: var(--font-alt); font-size: .95rem; margin: 26px 0 14px; display: flex; align-items: center; gap: 10px; color: var(--heading); }
+.bk-sub svg { width: 18px; height: 18px; color: var(--primary); }
+.bk-nav { display: flex; justify-content: space-between; gap: 12px; margin-top: 30px; padding-top: 22px; border-top: 1px solid var(--line); }
+.option-tile.disabled { opacity: .45; cursor: not-allowed; }
+.option-tile .tile em { font-style: normal; margin-top: 4px; align-self: flex-start; }
+.bk-aside { position: sticky; top: calc(var(--header-h) + 20px); display: flex; flex-direction: column; gap: 18px; }
+.bk-summary li { display: flex; justify-content: space-between; gap: 12px; padding: 9px 0; border-bottom: 1px dashed var(--line); font-size: .86rem; }
+.bk-summary li span { color: var(--muted); }
+.bk-summary li strong { text-align: right; font-size: .86rem; overflow-wrap: anywhere; }
+.bk-sum-total { display: flex; justify-content: space-between; align-items: baseline; margin-top: 16px; padding: 14px 16px; border-radius: 14px; background: rgba(0,174,239,.1); border: 1px solid rgba(0,174,239,.3); }
+.bk-sum-total span { font-size: .82rem; color: var(--muted); }
+.bk-sum-total strong { font-family: var(--font-display); font-size: 1.5rem; }
+.bk-success { text-align: center; padding: 10px 0 20px; }
+.bk-check { width: 86px; height: 86px; margin: 0 auto 20px; border-radius: 50%; display: grid; place-items: center; background: linear-gradient(135deg, #16A34A, #22C55E); color: #fff; box-shadow: 0 0 0 12px rgba(34,197,94,.14), 0 20px 40px -10px rgba(34,197,94,.6); animation: checkPop .6s var(--ease); }
+.bk-check svg { width: 40px; height: 40px; stroke-width: 2.6; }
+.bk-success h2 { font-size: 1.8rem; margin-bottom: 8px; }
+.bk-ids { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+.bk-ids div { padding: 16px; border-radius: 14px; background: var(--input-bg); border: 1px solid var(--line); text-align: center; }
+.bk-ids span { display: block; font-size: .7rem; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); font-weight: 700; margin-bottom: 4px; }
+.bk-ids strong { font-size: 1rem; }
+.pay-tiles { grid-template-columns: repeat(3, 1fr); }
+.promo-row { display: flex; gap: 10px; margin-top: 16px; }
+
+/* ---------- Calendar ---------- */
+.calendar { padding: 16px; border-radius: 18px; background: var(--input-bg); border: 1px solid var(--line); max-width: 380px; }
+.cal-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+.cal-head strong { font-family: var(--font-alt); }
+.cal-head .icon-btn { width: 36px; height: 36px; }
+.cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; }
+.cal-dow span { text-align: center; font-size: .7rem; font-weight: 700; color: var(--muted); padding: 4px 0; text-transform: uppercase; letter-spacing: .05em; }
+.cal-day { aspect-ratio: 1; border-radius: 10px; font-size: .86rem; font-weight: 600; color: var(--text); transition: .2s; position: relative; }
+.cal-day:hover:not(:disabled) { background: rgba(0,174,239,.14); color: var(--primary); }
+.cal-day:disabled { opacity: .28; cursor: not-allowed; }
+.cal-day.today { box-shadow: inset 0 0 0 1.5px var(--primary); }
+.cal-day.busy::after { content: ""; position: absolute; bottom: 5px; left: 50%; width: 5px; height: 5px; margin-left: -2.5px; border-radius: 50%; background: var(--warning); }
+.cal-day.selected { background: var(--transport-gradient); color: #fff; box-shadow: 0 8px 18px -6px rgba(0,174,239,.7); }
+.cal-legend { display: flex; gap: 16px; margin-top: 12px; font-size: .74rem; color: var(--muted); }
+.cal-legend span { display: inline-flex; gap: 6px; align-items: center; }
+.cal-legend i { width: 10px; height: 10px; border-radius: 3px; display: inline-block; }
+.cal-legend i.sel { background: var(--primary); }
+.cal-legend i.busy { background: var(--warning); border-radius: 50%; }
+.schedule-grid { display: grid; grid-template-columns: auto 1fr; gap: 28px; align-items: start; }
+
+/* ---------- Shipping calculator ---------- */
+.calc-shell { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(340px, .9fr); gap: 28px; align-items: start; }
+.calc-result-card { position: sticky; top: calc(var(--header-h) + 20px); }
+.calc-empty { text-align: center; padding: 50px 10px; }
+.calc-empty svg { width: 46px; height: 46px; margin: 0 auto 14px; color: var(--primary); }
+.calc-empty h3 { margin-bottom: 6px; }
+.calc-summary { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; padding-bottom: 18px; border-bottom: 1px solid var(--line); }
+.calc-total { font-family: var(--font-display); font-size: clamp(2.2rem, 4vw, 3rem); font-weight: 700; color: var(--heading); line-height: 1.1; letter-spacing: -.02em; }
+.calc-kpis { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 18px 0; }
+.calc-kpis div { padding: 12px 14px; border-radius: 12px; background: var(--input-bg); border: 1px solid var(--line); }
+.calc-kpis span { display: block; font-size: .68rem; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); font-weight: 700; }
+.calc-kpis strong { font-size: 1rem; }
+.calc-lines li { display: grid; grid-template-columns: 1.3fr 1fr auto; gap: 14px; align-items: center; padding: 10px 0; border-bottom: 1px solid var(--line-soft); font-size: .88rem; }
+.calc-lines li span { color: var(--muted); }
+.calc-lines li.total { border-bottom: 0; border-top: 1px solid var(--line); margin-top: 6px; padding-top: 14px; font-size: 1rem; }
+.calc-lines li.total span { color: var(--heading); font-weight: 700; }
+.calc-lines li.total strong { font-family: var(--font-display); font-size: 1.3rem; color: var(--accent); }
+.calc-bar { height: 6px; border-radius: 6px; background: var(--line-soft); overflow: hidden; }
+.calc-bar i { display: block; height: 100%; background: var(--transport-gradient); border-radius: 6px; animation: growX .8s var(--ease); transform-origin: left; }
+@keyframes growX { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+.dims-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.swap-btn { align-self: end; }
+.table tr.selected td { background: rgba(0,174,239,.08); }
+.table tr.selected td:first-child { box-shadow: inset 3px 0 0 var(--primary); }
+.mode-tiles { grid-template-columns: repeat(4, 1fr); }
+.speed-tiles { grid-template-columns: repeat(4, 1fr); }
+.calc-note { display: flex; gap: 10px; align-items: flex-start; font-size: .82rem; color: var(--muted); margin-top: 16px; }
+.calc-note svg { width: 16px; height: 16px; flex-shrink: 0; margin-top: 3px; color: var(--primary); }

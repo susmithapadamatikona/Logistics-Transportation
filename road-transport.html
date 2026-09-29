@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Road Transportation · FTL, LTL &amp; Temperature-Controlled Trucking | NorthLane</title>
+  <meta name="description" content="GPS-tracked road transportation: full truckload, LTL, express, regional, long-distance, heavy cargo and temperature-controlled trucking across North America and Europe.">
+  <meta name="theme-color" content="#07111F">
+  <meta property="og:title" content="Road Transportation · FTL, LTL &amp; Temperature-Controlled Trucking | NorthLane">
+  <meta property="og:description" content="GPS-tracked road transportation: full truckload, LTL, express, regional, long-distance, heavy cargo and temperature-controlled trucking across North America and Europe.">
+  <meta property="og:image" content="assets/images/trucks/road-truck-desert.jpg">
+  <link rel="preload" as="image" href="assets/images/stackly-logo.webp" fetchpriority="high">
+  <link rel="icon" href="assets/icons/favicon.png" type="image/png">
+  <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/services.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <script>document.documentElement.classList.add('nl-loading');try{if(JSON.parse(localStorage.getItem('nl_prefs')||'{}').theme==='light')document.documentElement.setAttribute('data-theme','light')}catch(e){}</script>
+</head>
+<body data-page="road">
+<div id="site-header"></div>
+
+  <main id="main">
+    <section class="page-hero theme-dark" aria-labelledby="pageTitle">
+      <img class="bg-img" src="assets/images/trucks/road-truck-desert.jpg" alt="" data-parallax="0.15">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="Breadcrumb"><a href="index.html">Home</a><i data-icon="chevron-right"></i><a href="services.html">Services</a><i data-icon="chevron-right"></i><span aria-current="page">Road Transportation</span></nav>
+        <span class="eyebrow mt-3">Road transportation</span>
+        <h1 id="pageTitle">Trucking capacity you can see, every kilometre of the way</h1>
+        <p class="lead">Full and partial loads on a modern, GPS-connected fleet — dispatched by AI route planning and driven by 850+ certified professionals.</p>
+        <div class="hero-actions"><a class="btn btn-accent btn-lg" href="book-shipment.html"><i data-icon="truck"></i>Book a Truck</a><a class="btn btn-ghost btn-lg" href="#network"><i data-icon="route"></i>View network</a></div>
+        <div class="hero-meta"><div><strong><span data-count="1200" data-suffix="+">0</span></strong><span>Vehicles</span></div><div><strong><span data-count="48">0</span> + 26</strong><span>US states + EU corridors</span></div><div><strong><span data-count="98.9" data-decimals="1" data-suffix="%">0</span></strong><span>Road on-time rate</span></div></div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="subTitle">
+      <div class="container">
+        <div class="section-head" data-aos="fade-up"><span class="eyebrow">Road services</span><h2 id="subTitle">Seven ways to move by road</h2></div>
+        <div class="grid grid-4">
+          <article class="card card-hover feature-card" data-aos="fade-up"><span class="icon-box"><i data-icon="truck"></i></span><h3>Full Truckload</h3><p>A dedicated trailer, direct from your dock to theirs with no rehandling.</p><div class="fc-foot"><span class="muted">From</span><strong>$1.85 / km</strong></div></article>
+          <article class="card card-hover feature-card" data-aos="fade-up" data-aos-delay="70"><span class="icon-box"><i data-icon="layers"></i></span><h3>Less Than Truckload</h3><p>Pay per pallet on consolidated loads through our cross-dock network.</p><div class="fc-foot"><span class="muted">From</span><strong>$62 / pallet</strong></div></article>
+          <article class="card card-hover feature-card" data-aos="fade-up" data-aos-delay="140"><span class="icon-box accent"><i data-icon="zap"></i></span><h3>Express Transportation</h3><p>Team drivers and priority dispatch for loads that can't wait.</p><div class="fc-foot"><span class="muted">Pickup</span><strong>Within 2 h</strong></div></article>
+          <article class="card card-hover feature-card" data-aos="fade-up" data-aos-delay="210"><span class="icon-box"><i data-icon="map-pin"></i></span><h3>Regional Delivery</h3><p>Multi-stop routes within 500 km, ideal for store and branch replenishment.</p><div class="fc-foot"><span class="muted">Transit</span><strong>Same / next day</strong></div></article>
+          <article class="card card-hover feature-card" data-aos="fade-up"><span class="icon-box"><i data-icon="route"></i></span><h3>Long Distance</h3><p>Coast-to-coast relays that keep freight moving while drivers rest.</p><div class="fc-foot"><span class="muted">LA → NYC</span><strong>3.5 days</strong></div></article>
+          <article class="card card-hover feature-card" id="heavy" data-aos="fade-up" data-aos-delay="70"><span class="icon-box"><i data-icon="weight"></i></span><h3>Heavy Cargo</h3><p>Flatbeds, step-decks and lowbeds with permits, escorts and route surveys.</p><div class="fc-foot"><span class="muted">Up to</span><strong>80 t GVW</strong></div></article>
+          <article class="card card-hover feature-card" id="temperature" data-aos="fade-up" data-aos-delay="140"><span class="icon-box"><i data-icon="snowflake"></i></span><h3>Temperature Controlled</h3><p>GDP-certified reefers from −25 °C to +25 °C with live sensor logging.</p><div class="fc-foot"><span class="muted">Excursions</span><strong>0 in 2025</strong></div></article>
+          <a class="card card-hover feature-card" href="book-shipment.html" data-aos="fade-up" data-aos-delay="210" style="background:var(--transport-gradient);color:#fff;border:0"><span class="icon-box" style="background:rgba(255,255,255,.18);color:#fff;border-color:rgba(255,255,255,.3)"><i data-icon="package"></i></span><h3 style="color:#fff">Ready to ship?</h3><p style="color:#E0F4FF">Book any road service online in six steps with an instant price.</p><div class="fc-foot" style="border-color:rgba(255,255,255,.25)"><strong style="color:#fff">Book now</strong><i data-icon="arrow-right"></i></div></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt" aria-labelledby="vehTitle">
+      <div class="container">
+        <div class="section-head-row">
+          <div class="section-head left" data-aos="fade-up"><span class="eyebrow">Vehicle types</span><h2 id="vehTitle">The right vehicle for every load</h2><p>Average fleet age 3.2 years. All units carry GPS, electronic logging, forward and cab cameras.</p></div>
+          <a class="btn btn-ghost" href="fleet.html">Browse full fleet<i data-icon="arrow-right"></i></a>
+        </div>
+        <div class="spec-grid" id="vehicleTypes"></div>
+        <div class="grid grid-4 mt-4">
+          <div class="card card-sm" data-aos="fade-up"><div class="stat-mini"><span class="num"><span data-count="28400" data-suffix=" t">0</span></span><span class="lbl">Daily fleet capacity</span></div></div>
+          <div class="card card-sm" data-aos="fade-up" data-aos-delay="70"><div class="stat-mini"><span class="num"><span data-count="126">0</span></span><span class="lbl">Refrigerated units</span></div></div>
+          <div class="card card-sm" data-aos="fade-up" data-aos-delay="140"><div class="stat-mini"><span class="num"><span data-count="204">0</span></span><span class="lbl">Electric vehicles</span></div></div>
+          <div class="card card-sm" data-aos="fade-up" data-aos-delay="210"><div class="stat-mini"><span class="num"><span data-count="87" data-suffix="%">0</span></span><span class="lbl">Average utilization</span></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="network" aria-labelledby="netTitle">
+      <div class="container">
+        <div class="section-head" data-aos="fade-up"><span class="eyebrow">Delivery coverage &amp; route network</span><h2 id="netTitle">Live trucks across our North American lanes</h2><p>Every icon below is a truck on a scheduled lane. Click a terminal for details.</p></div>
+        <div class="card route-map-card" data-aos="fade-up">
+          <div class="rm-map"><div class="leaflet-holder" id="roadMap" aria-label="Map of NorthLane road network with moving trucks"></div><div class="map-legend"><span><i style="background:#FFB000"></i>Regional hub</span><span><i style="background:#0D1B2A;border:2px solid #00AEEF"></i>Terminal</span><span><i style="background:#00AEEF;border-radius:2px;height:3px;width:16px"></i>Daily lane</span></div></div>
+          <div class="rm-foot"><div class="stat-mini"><span class="num">16</span><span class="lbl">Terminals &amp; hubs</span></div><div class="stat-mini"><span class="num">17</span><span class="lbl">Dedicated lanes shown</span></div><div class="stat-mini"><span class="num">412</span><span class="lbl">Departures per day</span></div><div class="stat-mini"><span class="num">97%</span><span class="lbl">US population within 1 day</span></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt" aria-labelledby="safeTitle">
+      <div class="container">
+        <div class="grid grid-3">
+          <div class="card" data-aos="fade-up">
+            <span class="icon-box"><i data-icon="shield-check"></i></span>
+            <h3 class="mt-2" id="safeTitle">Safety features</h3>
+            <ul class="list-check mt-2">
+              <li><i data-icon="check-circle"></i>Collision mitigation &amp; lane-keep assist on every tractor</li>
+              <li><i data-icon="check-circle"></i>AI dash-cams with fatigue and distraction alerts</li>
+              <li><i data-icon="check-circle"></i>Geofenced sealed trailers for high-value loads</li>
+              <li><i data-icon="check-circle"></i>0.21 DOT-reportable incidents per million miles</li>
+            </ul>
+          </div>
+          <div class="card" data-aos="fade-up" data-aos-delay="100">
+            <span class="icon-box accent"><i data-icon="steering"></i></span>
+            <h3 class="mt-2">Driver management</h3>
+            <ul class="list-check mt-2">
+              <li><i data-icon="check-circle"></i>850+ CDL drivers, 9 years average experience</li>
+              <li><i data-icon="check-circle"></i>Hours-of-service planned into every route</li>
+              <li><i data-icon="check-circle"></i>Quarterly defensive-driving certification</li>
+              <li><i data-icon="check-circle"></i>14% annual turnover — a third of the industry average</li>
+            </ul>
+            <a class="link-arrow mt-2" href="drivers.html">Meet our drivers <i data-icon="arrow-right"></i></a>
+          </div>
+          <div class="card" data-aos="fade-up" data-aos-delay="200">
+            <span class="icon-box success"><i data-icon="signal"></i></span>
+            <h3 class="mt-2">Tracking technology</h3>
+            <ul class="list-check mt-2">
+              <li><i data-icon="check-circle"></i>GPS position every 30 seconds</li>
+              <li><i data-icon="check-circle"></i>Predictive ETA using live traffic and weather</li>
+              <li><i data-icon="check-circle"></i>Reefer, door and shock sensors streamed live</li>
+              <li><i data-icon="check-circle"></i>Share-able tracking links for consignees</li>
+            </ul>
+            <a class="link-arrow mt-2" href="tracking.html?id=TRK-2026-45821">See a live truck <i data-icon="arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-sm">
+      <div class="container">
+        <div class="cta-band theme-dark" data-aos="zoom-in">
+          <img class="bg-img" src="assets/images/trucks/heavy-truck.jpg" alt="" loading="lazy">
+          <div class="cta-inner"><div><h2>Need a truck tomorrow morning?</h2><p>Book before 6 pm and we'll dispatch a vehicle for next-day pickup on 94% of lanes.</p></div><div class="flex flex-wrap"><a class="btn btn-accent btn-lg" href="book-shipment.html"><i data-icon="truck"></i>Book a truck</a><a class="btn btn-ghost btn-lg" href="shipping-calculator.html">Get a price</a></div></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js" defer></script>
+  <script src="js/icons.js" defer></script>
+  <script src="js/data.js" defer></script>
+  <script src="js/notifications.js" defer></script>
+  <script src="js/navbar.js" defer></script>
+  <script src="js/animations.js" defer></script>
+  <script src="js/tracking.js" defer></script>
+  <script src="js/services.js" defer></script>
+  <script src="js/main.js" defer></script>
+</body>
+</html>

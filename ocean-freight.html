@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ocean Freight · FCL, LCL &amp; Container Tracking | NorthLane Logistics</title>
+  <meta name="description" content="Ocean freight: full and less-than-container loads, import and export, port-to-port and door-to-door service with live container tracking, vessel and ETA details.">
+  <meta name="theme-color" content="#07111F">
+  <meta property="og:title" content="Ocean Freight · FCL, LCL &amp; Container Tracking | NorthLane Logistics">
+  <meta property="og:description" content="Ocean freight: full and less-than-container loads, import and export, port-to-port and door-to-door service with live container tracking, vessel and ETA details.">
+  <meta property="og:image" content="assets/images/logistics/container-ship.jpg">
+  <link rel="preload" as="image" href="assets/images/stackly-logo.webp" fetchpriority="high">
+  <link rel="icon" href="assets/icons/favicon.png" type="image/png">
+  <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/services.css">
+  <link rel="stylesheet" href="css/tracking.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <script>document.documentElement.classList.add('nl-loading');try{if(JSON.parse(localStorage.getItem('nl_prefs')||'{}').theme==='light')document.documentElement.setAttribute('data-theme','light')}catch(e){}</script>
+</head>
+<body data-page="ocean">
+<div id="site-header"></div>
+
+  <main id="main">
+    <section class="page-hero theme-dark" aria-labelledby="pageTitle">
+      <img class="bg-img" src="assets/images/logistics/container-ship.jpg" alt="" data-parallax="0.15">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="Breadcrumb"><a href="index.html">Home</a><i data-icon="chevron-right"></i><a href="services.html">Services</a><i data-icon="chevron-right"></i><span aria-current="page">Ocean Freight</span></nav>
+        <span class="eyebrow mt-3">Ocean freight</span>
+        <h1 id="pageTitle">Ocean freight with container-level visibility</h1>
+        <p class="lead">Weekly sailings on the world's major trade lanes, in-house customs brokerage and GPS trackers on every NorthLane-managed container.</p>
+        <div class="hero-actions"><a class="btn btn-accent btn-lg" href="book-shipment.html"><i data-icon="ship"></i>Book Ocean Freight</a><a class="btn btn-ghost btn-lg" href="#containers"><i data-icon="search"></i>Track a container</a></div>
+        <div class="hero-meta"><div><strong>38</strong><span>Carrier partners</span></div><div><strong>210</strong><span>Weekly sailings</span></div><div><strong>96.4%</strong><span>Schedule reliability</span></div></div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="subTitle">
+      <div class="container">
+        <div class="section-head" data-aos="fade-up"><span class="eyebrow">Ocean services</span><h2 id="subTitle">From a single pallet to a full vessel string</h2></div>
+        <div class="grid grid-4">
+          <article class="card card-hover feature-card" data-aos="fade-up"><span class="icon-box"><i data-icon="container"></i></span><h3>Full Container Load</h3><p>Exclusive 20', 40' and 40' HC containers — sealed at origin, opened at destination.</p></article>
+          <article class="card card-hover feature-card" data-aos="fade-up" data-aos-delay="70"><span class="icon-box"><i data-icon="layers"></i></span><h3>Less Container Load</h3><p>Share a container and pay per cubic metre, with weekly consolidation from 40 origins.</p></article>
+          <article class="card card-hover feature-card" data-aos="fade-up" data-aos-delay="140"><span class="icon-box"><i data-icon="download"></i></span><h3>Import</h3><p>ISF filing, customs entry, duty payment and drayage to your warehouse.</p></article>
+          <article class="card card-hover feature-card" data-aos="fade-up" data-aos-delay="210"><span class="icon-box"><i data-icon="upload"></i></span><h3>Export</h3><p>Export declarations, certificates of origin, VGM and booking with preferred carriers.</p></article>
+          <article class="card card-hover feature-card" data-aos="fade-up"><span class="icon-box"><i data-icon="anchor"></i></span><h3>Port-to-Port</h3><p>Ocean leg only — ideal when you manage origin and destination trucking yourself.</p></article>
+          <article class="card card-hover feature-card" data-aos="fade-up" data-aos-delay="70"><span class="icon-box"><i data-icon="home"></i></span><h3>Door-to-Door</h3><p>Factory pickup to final delivery under a single bill of lading and one invoice.</p></article>
+          <article class="card card-hover feature-card" data-aos="fade-up" data-aos-delay="140"><span class="icon-box accent"><i data-icon="signal"></i></span><h3>Container Tracking</h3><p>Live GPS, temperature and door-open events for every container we manage.</p></article>
+          <article class="card card-hover feature-card" data-aos="fade-up" data-aos-delay="210"><span class="icon-box"><i data-icon="shield-check"></i></span><h3>Customs &amp; Compliance</h3><p>Licensed brokers in 18 countries, bonded storage and duty-drawback programs.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="containers" aria-labelledby="ctTitle">
+      <div class="container">
+        <div class="section-head" data-aos="fade-up"><span class="eyebrow">Container tracking</span><h2 id="ctTitle">Where is my container?</h2><p>Search by container ID to see the vessel, ports, departure, arrival and current status.</p></div>
+        <form class="container-search" id="containerForm" role="search" aria-label="Track a container">
+          <label for="ctInput" class="sr-only">Container ID</label>
+          <div class="input-icon"><i data-icon="container"></i><input id="ctInput" class="input" placeholder="Container ID · e.g. NLMU 482193-7" value="NLMU 482193-7" autocomplete="off"></div>
+          <button class="btn" type="submit"><i data-icon="search"></i>Track Container</button>
+        </form>
+        <div id="containerResult" aria-live="polite"></div>
+        <div class="card mt-4" data-aos="fade-up">
+          <div class="card-head"><h3 class="h3">Containers on the water</h3><span class="xs muted">Select a container to view its voyage</span></div>
+          <div class="table-wrap" style="border:0"><table class="table"><caption class="sr-only">NorthLane-managed containers</caption><thead><tr><th scope="col">Container ID</th><th scope="col">Vessel</th><th scope="col">Route</th><th scope="col">Departure</th><th scope="col">Arrival</th><th scope="col">Status</th></tr></thead><tbody id="containerTable"></tbody></table></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="liveTitle">
+      <div class="container split">
+        <div data-aos="fade-right">
+          <span class="eyebrow">Live on the Pacific</span>
+          <h2 id="liveTitle" class="mt-2">Follow a trans-Pacific shipment in real time</h2>
+          <p class="mt-2">This FCL of consumer electronics sailed from Shanghai aboard MV NorthLane Meridian. Our control tower watches weather routing, port congestion and berth windows so you don't have to.</p>
+          <ul class="list-check mt-3">
+            <li><i data-icon="check-circle"></i>Port congestion alerts with rerouting options</li>
+            <li><i data-icon="check-circle"></i>Automatic pre-alerts and customs pre-filing 5 days before arrival</li>
+            <li><i data-icon="check-circle"></i>Drayage booked against the vessel's actual berth time</li>
+          </ul>
+        </div>
+        <div class="card" data-live-card="TRK-2026-38210" data-aos="fade-left" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <section class="section-sm">
+      <div class="container">
+        <div class="cta-band theme-dark" data-aos="zoom-in">
+          <img class="bg-img" src="assets/images/logistics/port-cranes.jpg" alt="" loading="lazy">
+          <div class="cta-inner"><div><h2>Lock in peak-season space now</h2><p>Allocation agreements with 38 carriers guarantee your containers get loaded, even when the market is tight.</p></div><div class="flex flex-wrap"><a class="btn btn-accent btn-lg" href="contact.html"><i data-icon="ship"></i>Reserve space</a><a class="btn btn-ghost btn-lg" href="shipping-calculator.html">Get a rate</a></div></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js" defer></script>
+  <script src="js/icons.js" defer></script>
+  <script src="js/data.js" defer></script>
+  <script src="js/notifications.js" defer></script>
+  <script src="js/navbar.js" defer></script>
+  <script src="js/animations.js" defer></script>
+  <script src="js/tracking.js" defer></script>
+  <script src="js/services.js" defer></script>
+  <script src="js/main.js" defer></script>
+</body>
+</html>

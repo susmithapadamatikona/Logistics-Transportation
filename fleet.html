@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fleet Management · 1,200+ GPS-Tracked Vehicles | NorthLane Logistics</title>
+  <meta name="description" content="Browse NorthLane&#x27;s connected fleet: delivery vans, pickup, medium, heavy, container, refrigerated and electric vehicles with live status, fuel, mileage and service data.">
+  <meta name="theme-color" content="#07111F">
+  <meta property="og:title" content="Fleet Management · 1,200+ GPS-Tracked Vehicles | NorthLane Logistics">
+  <meta property="og:description" content="Browse NorthLane&#x27;s connected fleet: delivery vans, pickup, medium, heavy, container, refrigerated and electric vehicles with live status, fuel, mileage and service data.">
+  <meta property="og:image" content="assets/images/trucks/heavy-truck.jpg">
+  <link rel="preload" as="image" href="assets/images/stackly-logo.webp" fetchpriority="high">
+  <link rel="icon" href="assets/icons/favicon.png" type="image/png">
+  <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/fleet.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <script>document.documentElement.classList.add('nl-loading');try{if(JSON.parse(localStorage.getItem('nl_prefs')||'{}').theme==='light')document.documentElement.setAttribute('data-theme','light')}catch(e){}</script>
+</head>
+<body data-page="fleet">
+<div id="site-header"></div>
+
+  <main id="main">
+    <section class="page-hero theme-dark" aria-labelledby="pageTitle">
+      <img class="bg-img" src="assets/images/trucks/heavy-truck.jpg" alt="" data-parallax="0.15">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="Breadcrumb"><a href="index.html">Home</a><i data-icon="chevron-right"></i><span aria-current="page">Fleet</span></nav>
+        <span class="eyebrow mt-3">Fleet management</span>
+        <h1 id="pageTitle">A connected fleet, visible down to the fuel gauge</h1>
+        <p class="lead">Every NorthLane vehicle streams location, fuel, mileage and maintenance data. Explore a live sample of our fleet below.</p>
+        <div class="hero-meta"><div><strong><span data-count="1200" data-suffix="+">0</span></strong><span>Vehicles</span></div><div><strong>3.2 yrs</strong><span>Average fleet age</span></div><div><strong><span data-count="204">0</span></strong><span>Electric vehicles</span></div><div><strong><span data-count="99.2" data-decimals="1" data-suffix="%">0</span></strong><span>Maintenance compliance</span></div></div>
+      </div>
+    </section>
+
+    <section class="section-sm" aria-labelledby="fleetListTitle">
+      <div class="container">
+        <h2 class="sr-only" id="fleetListTitle">Vehicle directory</h2>
+        <div class="status-summary" id="statusSummary" role="group" aria-label="Filter vehicles by status"></div>
+        <div class="toolbar">
+          <div class="input-icon"><i data-icon="search"></i><label for="vehicleSearch" class="sr-only">Search vehicles</label><input id="vehicleSearch" class="input" placeholder="Search vehicle number, driver or city…"></div>
+          <label for="vehicleType" class="sr-only">Vehicle type</label>
+          <select id="vehicleType" class="select"><option value="all">All vehicle types</option><option>Delivery Van</option><option>Pickup Truck</option><option>Medium Truck</option><option>Heavy Truck</option><option>Container Truck</option><option>Refrigerated Truck</option><option>Electric Delivery Vehicle</option></select>
+          <label for="vehicleSort" class="sr-only">Sort vehicles</label>
+          <select id="vehicleSort" class="select"><option value="id-asc">Sort: Vehicle number</option><option value="fuel-asc">Fuel: low to high</option><option value="fuel-desc">Fuel: high to low</option><option value="mileage-desc">Mileage: highest</option><option value="deliveries-desc">Most deliveries</option><option value="service-asc">Next service: soonest</option></select>
+          <div class="view-toggle" role="group" aria-label="View"><button data-view="grid" aria-label="Grid view"><i data-icon="grid"></i></button><button data-view="table" aria-label="Table view"><i data-icon="menu"></i></button></div>
+          <span class="result-count" id="vehicleCount" aria-live="polite"></span>
+        </div>
+        <div class="vehicle-grid" id="vehicleGrid"></div>
+        <div class="pagination" id="vehiclePager" aria-label="Vehicle pages"></div>
+        <div class="table-wrap hidden" id="vehicleTableWrap">
+          <table class="table"><caption class="sr-only">All vehicles</caption><thead><tr><th scope="col">Vehicle</th><th scope="col">Driver</th><th scope="col">Capacity</th><th scope="col">Location</th><th scope="col">Fuel</th><th scope="col">Mileage (km)</th><th scope="col">Status</th><th scope="col">Next service</th><th scope="col">Deliveries</th><th scope="col"><span class="sr-only">Actions</span></th></tr></thead><tbody id="vehicleTable"></tbody></table>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt" aria-labelledby="fleetChartsTitle">
+      <div class="container">
+        <div class="section-head" data-aos="fade-up"><span class="eyebrow">Fleet analytics</span><h2 id="fleetChartsTitle">Utilization and availability</h2></div>
+        <div class="grid" style="grid-template-columns:minmax(0,1.5fr) minmax(0,1fr)" id="fleetChartsGrid">
+          <div class="card" data-aos="fade-up"><div class="card-head"><div><h3 class="h3">Average utilization by vehicle type</h3><span class="xs muted">Share of available hours on paid moves, last 30 days</span></div></div><div class="chart-box"><canvas id="fleetUtil" role="img" aria-label="Bar chart of average utilization by vehicle type"></canvas></div></div>
+          <div class="card" data-aos="fade-up" data-aos-delay="100"><div class="card-head"><div><h3 class="h3">Vehicle status</h3><span class="xs muted">Right now</span></div></div><div class="chart-box"><canvas id="fleetStatus" role="img" aria-label="Doughnut chart of vehicles by status"></canvas></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-sm">
+      <div class="container">
+        <div class="cta-band theme-dark" data-aos="zoom-in">
+          <img class="bg-img" src="assets/images/fleet/maintenance.jpg" alt="" loading="lazy">
+          <div class="cta-inner"><div><h2>Run your own fleet on NorthLane</h2><p>Fleet managers get live maps, maintenance scheduling and fuel analytics in the Fleet Control Center.</p></div><div class="flex flex-wrap"><a class="btn btn-accent btn-lg" href="fleet-dashboard.html"><i data-icon="grid"></i>Open Fleet Control</a><a class="btn btn-ghost btn-lg" href="drivers.html">Meet our drivers</a></div></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js" defer></script>
+  <script src="js/icons.js" defer></script>
+  <script src="js/data.js" defer></script>
+  <script src="js/notifications.js" defer></script>
+  <script src="js/navbar.js" defer></script>
+  <script src="js/animations.js" defer></script>
+  <script src="js/charts.js" defer></script>
+  <script src="js/fleet.js" defer></script>
+  <script src="js/main.js" defer></script>
+</body>
+</html>

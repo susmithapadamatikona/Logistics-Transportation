@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact NorthLane Logistics · Sales, Support &amp; Offices</title>
+  <meta name="description" content="Contact NorthLane Logistics for quotes, shipment support and partnerships. Headquarters in Chicago with offices in Dallas, Rotterdam, Dubai and Singapore. 24/7 emergency desk.">
+  <meta name="theme-color" content="#07111F">
+  <meta property="og:title" content="Contact NorthLane Logistics · Sales, Support &amp; Offices">
+  <meta property="og:description" content="Contact NorthLane Logistics for quotes, shipment support and partnerships. Headquarters in Chicago with offices in Dallas, Rotterdam, Dubai and Singapore. 24/7 emergency desk.">
+  <meta property="og:image" content="assets/images/hero/hero-truck-night.jpg">
+  <link rel="preload" as="image" href="assets/images/stackly-logo.webp" fetchpriority="high">
+  <link rel="icon" href="assets/icons/favicon.png" type="image/png">
+  <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/services.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <script>document.documentElement.classList.add('nl-loading');try{if(JSON.parse(localStorage.getItem('nl_prefs')||'{}').theme==='light')document.documentElement.setAttribute('data-theme','light')}catch(e){}</script>
+</head>
+<body data-page="contact">
+<div id="site-header"></div>
+
+  <main id="main">
+    <section class="page-hero theme-dark" aria-labelledby="pageTitle">
+      <img class="bg-img" src="assets/images/logistics/handshake.jpg" alt="">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="Breadcrumb"><a href="index.html">Home</a><i data-icon="chevron-right"></i><span aria-current="page">Contact</span></nav>
+        <span class="eyebrow mt-3">Contact us</span>
+        <h1 id="pageTitle">Talk to a logistics expert</h1>
+        <p class="lead">Quotes, onboarding, shipment support or partnerships — tell us what you need and the right team will reply within one business hour.</p>
+      </div>
+    </section>
+
+    <section class="section-sm">
+      <div class="container contact-layout">
+        <form class="card js-demo-form" data-store="enquiries" data-success-title="Message sent" data-success="Thanks! A NorthLane specialist will reply within one business hour." aria-labelledby="formTitle">
+          <div class="card-head"><h2 class="h3" id="formTitle">Send us a message</h2><span class="badge badge-success">Avg. reply 38 min</span></div>
+          <div class="form-grid">
+            <div class="field"><label for="cName">Full Name <span class="req">*</span></label><input id="cName" class="input" name="name" required autocomplete="name" placeholder="e.g. Alex Morgan"><span class="field-error"></span></div>
+            <div class="field"><label for="cCompany">Company</label><input id="cCompany" class="input" name="company" autocomplete="organization" placeholder="e.g. Helix Pharma Inc."></div>
+            <div class="field"><label for="cEmail">Email <span class="req">*</span></label><input id="cEmail" class="input" type="email" name="email" required autocomplete="email" placeholder="you@company.com"><span class="field-error"></span></div>
+            <div class="field"><label for="cPhone">Phone</label><input id="cPhone" class="input" type="tel" name="phone" autocomplete="tel" placeholder="+1 (312) 555-0142"><span class="field-error"></span></div>
+            <div class="field"><label for="cService">Service Required <span class="req">*</span></label><select id="cService" class="select" name="service" required><option value="">Select a service</option><option>Road Transportation</option><option>Air Freight</option><option>Ocean Freight</option><option>Rail Freight</option><option>Warehousing</option><option>Last-Mile Delivery</option><option>Express Delivery</option><option>Supply Chain Management</option></select><span class="field-error"></span></div>
+            <div class="field"><label for="cType">Shipment Type</label><select id="cType" class="select" name="shipmentType"><option value="">Select shipment type</option><option>General cargo</option><option>Temperature controlled</option><option>Hazardous materials</option><option>Oversized / heavy</option><option>E-commerce parcels</option><option>High value</option></select></div>
+            <div class="field full"><label for="cMessage">Message <span class="req">*</span></label><textarea id="cMessage" class="textarea" name="message" required data-minlength="15" placeholder="Tell us about your lanes, volumes and timelines…"></textarea><span class="field-error"></span></div>
+            <div class="field full"><label class="check"><input type="checkbox" name="consent" required data-msg="Please agree so we can contact you.">I agree to be contacted about my enquiry and accept the privacy policy.</label><span class="field-error"></span></div>
+          </div>
+          <button class="btn btn-lg mt-3" type="submit"><i data-icon="send"></i>Send Message</button>
+        </form>
+
+        <div class="contact-info">
+          <div class="card contact-card"><span class="icon-box"><i data-icon="building"></i></span><div><strong>Headquarters</strong><p>1200 W Fulton Market, Chicago, IL 60607, USA</p></div></div>
+          <div class="card contact-card"><span class="icon-box"><i data-icon="phone"></i></span><div><strong>Phone</strong><a href="tel:+18005550148">+1 (800) 555-0148</a><p>Sales: <a href="tel:+13125550100">+1 (312) 555-0100</a></p></div></div>
+          <div class="card contact-card"><span class="icon-box"><i data-icon="mail"></i></span><div><strong>Email</strong><a href="mailto:hello@northlane.io">hello@northlane.io</a><p>Support: <a href="mailto:dispatch@northlane.io">dispatch@northlane.io</a></p></div></div>
+          <div class="card contact-card"><span class="icon-box accent"><i data-icon="clock"></i></span><div><strong>Working Hours</strong><p>Sales: Mon–Fri, 8am–6pm CT<br>Tracking &amp; dispatch: 24/7/365</p></div></div>
+          <div class="card contact-card"><span class="icon-box success"><i data-icon="headset"></i></span><div><strong>Customer Support</strong><p>Live chat in the customer portal, average answer time 42 seconds.</p></div></div>
+          <div class="card"><strong class="small">Follow us</strong><div class="socials mt-2"><a href="404.html" aria-label="LinkedIn"><i data-icon="linkedin"></i></a><a href="404.html" aria-label="X (Twitter)"><i data-icon="twitter"></i></a><a href="404.html" aria-label="Facebook"><i data-icon="facebook"></i></a><a href="404.html" aria-label="Instagram"><i data-icon="instagram"></i></a><a href="404.html" aria-label="YouTube"><i data-icon="youtube"></i></a></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-sm" aria-labelledby="offTitle">
+      <div class="container">
+        <div class="section-head left" data-aos="fade-up" style="margin-bottom:24px"><span class="eyebrow">Office locations</span><h2 id="offTitle" class="mt-2">Three offices, one team</h2></div>
+        <div class="grid" style="grid-template-columns:minmax(0,1fr) minmax(0,1.4fr)" id="officeGrid">
+          <div class="stack" id="officeList"></div>
+          <div class="contact-map" data-aos="fade-left"><div class="leaflet-holder" id="contactMap" aria-label="Map of NorthLane office locations"></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-sm">
+      <div class="container">
+        <div class="emergency" data-aos="fade-up">
+          <div class="flex" style="gap:18px"><span class="icon-box danger"><i data-icon="alert"></i></span><div><h2 class="h3">24/7 Emergency Support</h2><p class="small">Shipment incident, temperature excursion or security event? Our critical desk responds within 5 minutes.</p></div></div>
+          <a class="btn btn-danger btn-lg" href="tel:+18005550199"><i data-icon="phone"></i>+1 (800) 555-0199</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js" defer></script>
+  <script src="js/icons.js" defer></script>
+  <script src="js/data.js" defer></script>
+  <script src="js/notifications.js" defer></script>
+  <script src="js/navbar.js" defer></script>
+  <script src="js/animations.js" defer></script>
+  <script src="js/tracking.js" defer></script>
+  <script src="js/pages.js" defer></script>
+  <script src="js/main.js" defer></script>
+</body>
+</html>

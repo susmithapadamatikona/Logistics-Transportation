@@ -1,0 +1,60 @@
+/* ==========================================================================
+   NorthLane Logistics — Animations
+   ========================================================================== */
+
+@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes ping { 75%, 100% { transform: scale(2.4); opacity: 0; } }
+@keyframes pinPulse { 0% { transform: scale(.4); opacity: .9; } 100% { transform: scale(1.9); opacity: 0; } }
+@keyframes ripple { to { transform: scale(4); opacity: 0; } }
+@keyframes dash { to { stroke-dashoffset: -44; } }
+@keyframes dashSlow { to { stroke-dashoffset: -200; } }
+@keyframes drawLine { from { stroke-dashoffset: var(--len, 1000); } to { stroke-dashoffset: 0; } }
+@keyframes stripes { to { background-position: 16px 0; } }
+@keyframes road { from { transform: translateX(-100%); } to { transform: translateX(260%); } }
+@keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+@keyframes floatSlow { 0%, 100% { transform: translateY(0) rotate(0); } 50% { transform: translateY(-8px) rotate(.4deg); } }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes scaleIn { from { opacity: 0; transform: scale(.92); } to { opacity: 1; transform: none; } }
+@keyframes toastIn { from { opacity: 0; transform: translateX(40px) scale(.96); } to { opacity: 1; transform: none; } }
+@keyframes toastOut { to { opacity: 0; transform: translateX(40px); } }
+@keyframes toastBar { from { width: 100%; } to { width: 0; } }
+@keyframes shimmer { 0% { background-position: -400px 0; } 100% { background-position: 400px 0; } }
+@keyframes blink { 50% { opacity: .35; } }
+@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+@keyframes radar { from { transform: rotate(0); } to { transform: rotate(360deg); } }
+@keyframes glowPulse { 0%, 100% { box-shadow: 0 0 0 0 rgba(0,174,239,.45); } 50% { box-shadow: 0 0 0 10px rgba(0,174,239,0); } }
+@keyframes truckBob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-1.5px); } }
+@keyframes flowRight { from { left: -10%; } to { left: 105%; } }
+@keyframes checkPop { 0% { transform: scale(0); } 60% { transform: scale(1.2); } 100% { transform: scale(1); } }
+@keyframes gradientShift { 0%, 100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
+
+.anim-float { animation: float 6s ease-in-out infinite; }
+.anim-float-slow { animation: floatSlow 8s ease-in-out infinite; }
+.anim-delay-1 { animation-delay: -1.5s; }
+.anim-delay-2 { animation-delay: -3s; }
+.anim-delay-3 { animation-delay: -4.5s; }
+.anim-blink { animation: blink 1.6s ease-in-out infinite; }
+.anim-spin { animation: spin 1s linear infinite; }
+
+/* Scroll reveal fallback (used when AOS is unavailable) */
+.reveal { opacity: 0; transform: translateY(26px); transition: opacity .8s var(--ease), transform .8s var(--ease); }
+.reveal.in { opacity: 1; transform: none; }
+
+/* 3D tilt */
+.tilt { transform-style: preserve-3d; will-change: transform; transition: transform .25s ease-out; }
+.tilt .tilt-inner { transform: translateZ(30px); }
+.tilt-glare { position: absolute; inset: 0; border-radius: inherit; pointer-events: none; background: radial-gradient(circle at var(--gx, 50%) var(--gy, 50%), rgba(255,255,255,.12), transparent 55%); opacity: 0; transition: opacity .3s; }
+.tilt:hover .tilt-glare { opacity: 1; }
+
+/* Skeleton shimmer */
+.skeleton { background: linear-gradient(90deg, var(--line-soft) 0, rgba(255,255,255,.08) 40%, var(--line-soft) 80%); background-size: 800px 100%; animation: shimmer 1.4s linear infinite; border-radius: 8px; }
+
+/* Value flash when live data updates */
+.flash { animation: valueFlash 1s ease; }
+@keyframes valueFlash { 0% { color: var(--accent); text-shadow: 0 0 12px rgba(255,176,0,.6); } 100% { text-shadow: none; } }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+  .reveal { opacity: 1; transform: none; }
+}

@@ -1,0 +1,198 @@
+/* ==========================================================================
+   NorthLane Logistics — Responsive layer
+   Breakpoints: 1280 · 1100 · 960 (tablet) · 720 · 560 (mobile) · 400
+   ========================================================================== */
+
+.mobile-only { display: none !important; }
+
+@media (max-width: 1280px) {
+  .nav-link { padding: 10px 11px; font-size: .9rem; }
+  .why-grid { grid-template-columns: repeat(3, 1fr); }
+  .stats-band { grid-template-columns: repeat(3, 1fr); }
+  .stat-cell:nth-child(4)::before { display: none; }
+  .stat-cell:nth-child(n+4) { border-top: 1px solid var(--line); }
+  .footer-top { grid-template-columns: 1.3fr 1fr 1fr 1fr 1.2fr; gap: 32px; }
+}
+
+@media (max-width: 1100px) {
+  :root { --header-h: 70px; }
+  .hide-md { display: none !important; }
+  /* Mobile navigation drawer */
+  .nav-toggle { display: inline-grid; }
+  .nav-menu {
+    position: fixed; top: 0; right: 0; bottom: 0; width: min(380px, 88vw); z-index: 80;
+    flex-direction: column; align-items: stretch; gap: 2px; padding: 90px 18px 24px;
+    background: var(--bg-alt);
+    border-left: 1px solid var(--line); overflow-y: auto; transform: translateX(105%); transition: transform .45s var(--ease);
+  }
+  .nav-menu.open { transform: none; box-shadow: var(--shadow-lg); }
+  .nav-toggle { position: relative; z-index: 90; }
+  .nav-overlay { display: block; position: fixed; inset: 0; z-index: 70; background: rgba(3,8,16,.6); opacity: 0; visibility: hidden; transition: .3s; }
+  .nav-overlay.show { opacity: 1; visibility: visible; }
+  body.menu-open { overflow: hidden; }
+  body.menu-open .site-header { z-index: 95; }
+  .nav-link { width: 100%; justify-content: space-between; padding: 14px 14px; font-size: 1rem; }
+  .mobile-only { display: flex !important; }
+  .nav-mobile-actions { flex-direction: column; gap: 10px; margin-top: 18px; padding-top: 18px; border-top: 1px solid var(--line); }
+
+  .quick-book, .split, .network-wrap, .perf-grid, .live-preview { grid-template-columns: 1fr; }
+  .live-panel { border-left: 0; border-top: 1px solid var(--line); }
+  .live-preview .map-col { min-height: 420px; }
+  .grid-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .process { grid-template-columns: repeat(3, 1fr); row-gap: 40px; }
+  .process-line { display: none; }
+  .track-layout, .sd-grid, .calc-shell, .bk-shell { grid-template-columns: 1fr; }
+  .track-map-card, .calc-result-card, .bk-aside { position: static; }
+  .track-map { height: 460px; }
+  .tr-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .kv-3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 960px) {
+  .grid-3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .why-grid { grid-template-columns: repeat(2, 1fr); }
+  .footer-top { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 32px; }
+  .footer-brand { grid-column: 1 / -1; }
+  .footer-brand p { max-width: 520px; }
+  .testimonial { grid-template-columns: 1fr; gap: 24px; text-align: center; }
+  .testimonial .t-photo img { width: 140px; height: 140px; border-radius: 50%; margin: 0 auto; }
+  .testimonial .t-photo .badge { position: static; margin-top: 10px; }
+  .testimonial .t-quote { margin: 0 auto 16px; }
+  .newsletter-band { grid-template-columns: 1fr; }
+  .quick-book-form .form-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .bk-ids { grid-template-columns: repeat(2, 1fr); }
+  .track-side-lists { grid-template-columns: 1fr; }
+  .schedule-grid { grid-template-columns: 1fr; }
+  .mode-tiles, .speed-tiles { grid-template-columns: repeat(2, 1fr); }
+  .sd-header { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 720px) {
+  .hide-sm { display: none !important; }
+  .container { padding: 0 16px; }
+  .section { padding: 64px 0; }
+  .grid-2, .grid-3, .grid-4, .form-grid, .quick-book-form .form-grid { grid-template-columns: 1fr; }
+  .stats-band { grid-template-columns: repeat(2, 1fr); }
+  .stat-cell::before { display: none !important; }
+  .stat-cell { border-top: 1px solid var(--line); padding: 24px 12px; }
+  .stat-cell:nth-child(-n+2) { border-top: 0; }
+  .stat-cell:nth-child(odd) { border-right: 1px solid var(--line); }
+  .track-form { flex-direction: column; }
+  .track-form .btn { width: 100%; }
+  .quote-breakdown { grid-template-columns: repeat(2, 1fr); }
+  .quote-total .btn { width: 100%; }
+  .process { grid-template-columns: 1fr 1fr; }
+  .why-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+  .why-card { padding: 18px 16px; }
+  .network-map { min-height: 300px; }
+  .network-map .hub text { font-size: 13px; }
+  .section-head-row { align-items: flex-start; }
+  .cta-band .cta-inner .flex .btn { flex: 1 1 100%; }
+  .footer-top { grid-template-columns: 1fr 1fr; gap: 32px 20px; padding: 56px 0 40px; }
+  .footer-bottom { flex-direction: column; align-items: flex-start; }
+  .footer-bottom nav { gap: 12px 20px; }
+  .tr-grid { grid-template-columns: 1fr; }
+  .status-steps em { font-size: .64rem; }
+  .status-steps span { width: 26px; height: 26px; }
+  .status-steps li::before { top: 12px; }
+  .tp-kpis { grid-template-columns: repeat(3, 1fr); }
+  .kv, .kv-3 { grid-template-columns: 1fr 1fr; }
+  .bk-progress li { font-size: 0; }
+  .bk-progress li span { width: 34px; height: 34px; font-size: .85rem; border-radius: 11px; }
+  .bk-track { top: 16px; }
+  .bk-nav { position: sticky; bottom: 0; z-index: 20; background: var(--glass-strong); backdrop-filter: blur(14px); margin: 24px -20px -20px; padding: 14px 20px; border-radius: 0 0 var(--radius) var(--radius); }
+  .bk-nav .btn { flex: 1; }
+  .pay-tiles { grid-template-columns: 1fr; }
+  .calc-lines li { grid-template-columns: 1fr auto; }
+  .calc-lines li .calc-bar { display: none; }
+  .modal-dialog { padding: 24px 20px; }
+  .page-hero .hero-meta { gap: 22px; }
+  .toolbar .select { flex: 1 1 45%; min-width: 0; }
+  .back-to-top { right: 14px; bottom: 14px; width: 46px; height: 46px; }
+  .toast-stack { right: 12px; left: 12px; bottom: 12px; max-width: none; }
+}
+
+@media (max-width: 480px) {
+  .btn-lg { padding: 15px 22px; font-size: .95rem; }
+  .process { grid-template-columns: 1fr; }
+  .why-grid { grid-template-columns: 1fr; }
+  .quote-breakdown { grid-template-columns: 1fr 1fr; }
+  .footer-col a, .footer-contact li { font-size: .88rem; }
+  .brand-logo { height: 32px; }
+  .pl-logo { height: 48px; }
+  .nav-actions { gap: 6px; }
+  .nav-actions .icon-btn { width: 40px; height: 40px; }
+  .tp-kpis { grid-template-columns: 1fr 1fr 1fr; gap: 6px; }
+  .tp-kpis strong { font-size: 1rem; }
+  .kv, .kv-3 { grid-template-columns: 1fr; }
+  .bk-ids { grid-template-columns: 1fr; }
+  .mode-tiles, .speed-tiles, .option-grid { grid-template-columns: 1fr 1fr; }
+  .dims-row { grid-template-columns: repeat(3, 1fr); gap: 6px; }
+  .live-kpis { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 560px) {
+  .announcement .container { justify-content: flex-start; padding-right: 44px; font-size: .78rem; gap: 10px; }
+  .announcement a { display: none; }
+}
+
+/* ---------- No horizontal overflow, ever ---------- */
+/* `clip` (unlike `hidden`) doesn't create a scroll container, so sticky headers keep working */
+html, body { overflow-x: clip; max-width: 100%; }
+/* Grid & flex children may shrink below their content width (wide tables scroll inside .table-wrap instead) */
+.grid > *, .split > *, .quick-book > *, .dgrid > *, .network-wrap > *, .board-grid > *, .contact-layout > *, .blog-layout > * { min-width: 0; }
+/* Sideways slide-in animations start ~100px off-canvas; on small screens they slide up instead */
+@media (max-width: 1100px) {
+  [data-aos="fade-left"]:not(.aos-animate), [data-aos="fade-right"]:not(.aos-animate),
+  [data-aos="fade-up-left"]:not(.aos-animate), [data-aos="fade-up-right"]:not(.aos-animate) { transform: translate3d(0, 24px, 0) !important; }
+  .reveal { transform: translateY(20px); }
+}
+
+/* ---------- Site-wide mobile polish ---------- */
+/* Long unbroken strings (emails, tracking IDs, URLs) never push the page sideways */
+p, li, dd, .kv strong, .footer-contact li, .contact-card a, .contact-card p { overflow-wrap: anywhere; }
+/* …but table cells keep whole words, so wide tables scroll inside .table-wrap instead of squeezing */
+.table td, .table th, .table p, .table li { overflow-wrap: normal; }
+@media (max-width: 720px) {
+  /* 16px form text stops iOS Safari from zooming in when a field is tapped */
+  .input, .select, .textarea, .newsletter-form .input { font-size: 16px; }
+  /* Comfortable tap targets */
+  .icon-btn { min-width: 44px; min-height: 44px; }
+  .chip, .tag-cloud button, .tag-cloud a { min-height: 36px; }
+  /* Tighter vertical rhythm */
+  .section { padding: 56px 0; }
+  .section-sm { padding: 40px 0; }
+  .section-head { margin-bottom: 32px; }
+  .section-head h2, .section-head-row h2 { font-size: clamp(1.6rem, 7vw, 2.1rem); }
+  .section-head p { font-size: 1rem; }
+  /* Inner-page heroes */
+  .page-hero { padding: 48px 0 44px; }
+  .page-hero h1 { font-size: clamp(1.9rem, 8.4vw, 2.5rem); margin: 14px 0; }
+  .page-hero p.lead { font-size: 1rem; }
+  .page-hero .hero-meta { gap: 18px 26px; margin-top: 30px; }
+  .page-hero .hero-meta div strong { font-size: 1.45rem; }
+  /* Cards & bands */
+  .cta-band { padding: 32px 20px; border-radius: var(--radius-lg); }
+  .cta-band h2 { font-size: clamp(1.5rem, 6.6vw, 1.9rem); }
+  .newsletter-band { padding: 24px 18px; }
+  .card-head { flex-wrap: wrap; }
+  .flex-between { flex-wrap: wrap; }
+  .modal { padding: 12px; }
+  .modal-dialog { max-height: calc(100vh - 24px); }
+}
+@media (max-width: 480px) {
+  .page-hero .hero-actions .btn, .error-links .btn { flex: 1 1 100%; }
+  .hero-actions .btn { flex: 1 1 100%; }
+  .newsletter-form { flex-direction: column; background: none; border: 0; padding: 0; gap: 10px; }
+  .newsletter-form .input { border: 1px solid var(--line); background: var(--input-bg); }
+  .newsletter-form .btn { width: 100%; }
+  .section-head-row > .btn, .section-head-row > a.btn { width: 100%; }
+  .container { padding: 0 14px; }
+}
+
+@media (min-width: 721px) and (max-width: 1100px) {
+  .footer-top { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 32px; }
+  .footer-brand { grid-column: 1 / -1; display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 12px 32px; }
+  .footer-brand p { margin: 0; max-width: 460px; }
+  .footer-brand .socials { margin-top: 0; }
+}

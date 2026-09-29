@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Book a Shipment · 6-Step Online Booking | NorthLane Logistics</title>
+  <meta name="description" content="Book road, air, ocean or rail freight online in six guided steps: shipment details, pickup and delivery, vehicle, schedule, price and instant confirmation.">
+  <meta name="theme-color" content="#07111F">
+  <meta property="og:title" content="Book a Shipment · 6-Step Online Booking | NorthLane Logistics">
+  <meta property="og:description" content="Book road, air, ocean or rail freight online in six guided steps: shipment details, pickup and delivery, vehicle, schedule, price and instant confirmation.">
+  <meta property="og:image" content="assets/images/hero/hero-truck-night.jpg">
+  <link rel="preload" as="image" href="assets/images/stackly-logo.webp" fetchpriority="high">
+  <link rel="icon" href="assets/icons/favicon.png" type="image/png">
+  <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/booking.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <script>document.documentElement.classList.add('nl-loading');try{if(JSON.parse(localStorage.getItem('nl_prefs')||'{}').theme==='light')document.documentElement.setAttribute('data-theme','light')}catch(e){}</script>
+</head>
+<body data-page="book">
+<div id="site-header"></div>
+
+  <main id="main">
+    <section class="page-hero theme-dark" aria-labelledby="pageTitle" style="padding-bottom:70px">
+      <img class="bg-img" src="assets/images/trucks/long-haul-truck.jpg" alt="">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="Breadcrumb"><a href="index.html">Home</a><i data-icon="chevron-right"></i><span aria-current="page">Book Shipment</span></nav>
+        <h1 id="pageTitle">Book a shipment</h1>
+        <p class="lead">Six quick steps from freight details to a confirmed booking — with a live price as you go. Your progress is saved automatically.</p>
+      </div>
+    </section>
+
+    <section class="section-sm" id="bookingTop">
+      <div class="container bk-shell">
+        <div class="card">
+          <div class="bk-progress-wrap">
+            <div class="bk-track" aria-hidden="true"><i id="bkBar"></i></div>
+            <ol class="bk-progress" aria-label="Booking progress">
+              <li class="current"><span>1</span>Shipment</li>
+              <li><span>2</span>Pickup &amp; Delivery</li>
+              <li><span>3</span>Vehicle</li>
+              <li><span>4</span>Schedule</li>
+              <li><span>5</span>Price</li>
+              <li><span><i data-icon="check"></i></span>Confirmation</li>
+            </ol>
+          </div>
+
+          <form id="bookingForm" aria-label="Shipment booking">
+            <!-- STEP 1 -->
+            <fieldset class="bk-step active" style="border:0">
+              <h2>Shipment details</h2>
+              <p>Tell us what you are shipping so we can size the right vehicle and handling.</p>
+              <h3 class="bk-sub"><i data-icon="package"></i>Package type</h3>
+              <div class="option-grid" role="radiogroup" aria-label="Package type">
+                <label class="option-tile"><input type="radio" name="packageType" value="Pallet" checked><span class="tile"><i data-icon="layers"></i><strong>Pallet</strong><span>Standard 120×100 cm</span></span></label>
+                <label class="option-tile"><input type="radio" name="packageType" value="Parcel"><span class="tile"><i data-icon="package"></i><strong>Parcel</strong><span>Boxes up to 30 kg</span></span></label>
+                <label class="option-tile"><input type="radio" name="packageType" value="Crate"><span class="tile"><i data-icon="container"></i><strong>Crate</strong><span>Wooden / reinforced</span></span></label>
+                <label class="option-tile"><input type="radio" name="packageType" value="Perishable"><span class="tile"><i data-icon="snowflake"></i><strong>Perishable</strong><span>Needs temperature control</span></span></label>
+                <label class="option-tile"><input type="radio" name="packageType" value="Heavy Machinery"><span class="tile"><i data-icon="weight"></i><strong>Machinery</strong><span>Oversized / heavy</span></span></label>
+                <label class="option-tile"><input type="radio" name="packageType" value="Documents"><span class="tile"><i data-icon="file"></i><strong>Documents</strong><span>Envelopes &amp; files</span></span></label>
+              </div>
+              <div class="form-grid mt-3">
+                <div class="field full"><label for="bDesc">Cargo description <span class="req">*</span></label><input id="bDesc" class="input" name="description" placeholder="e.g. Palletised consumer electronics, shrink-wrapped" required><span class="field-error"></span></div>
+                <div class="field"><label for="bWeight">Weight per unit (kg) <span class="req">*</span></label><input id="bWeight" class="input" type="number" name="weight" min="0.1" step="0.1" value="420" required><span class="field-error"></span></div>
+                <div class="field"><label for="bQty">Quantity <span class="req">*</span></label><input id="bQty" class="input" type="number" name="qty" min="1" value="6" required><span class="field-error"></span></div>
+                <div class="field"><label>Dimensions per unit (cm)</label><div class="dims-row"><input class="input" type="number" name="l" min="0" value="120" aria-label="Length in cm"><input class="input" type="number" name="w" min="0" value="100" aria-label="Width in cm"><input class="input" type="number" name="h" min="0" value="140" aria-label="Height in cm"></div></div>
+                <div class="field"><label for="bValue">Declared value (USD)</label><input id="bValue" class="input" type="number" name="declared" min="0" value="36000"></div>
+              </div>
+              <h3 class="bk-sub"><i data-icon="shield-check"></i>Special handling</h3>
+              <div class="flex flex-wrap" style="gap:18px">
+                <label class="check"><input type="checkbox" name="special" value="fragile">Fragile</label>
+                <label class="check"><input type="checkbox" name="special" value="temperature">Temperature controlled</label>
+                <label class="check"><input type="checkbox" name="special" value="hazardous">Hazardous (DG)</label>
+                <label class="check"><input type="checkbox" name="special" value="stackable" checked>Stackable</label>
+                <label class="check"><input type="checkbox" name="special" value="liftgate">Liftgate required</label>
+              </div>
+            </fieldset>
+
+            <!-- STEP 2 -->
+            <fieldset class="bk-step" hidden style="border:0">
+              <h2>Pickup &amp; delivery</h2>
+              <p>Where are we collecting from, and where is it going?</p>
+              <h3 class="bk-sub"><i data-icon="map-pin"></i>Pickup</h3>
+              <div class="form-grid">
+                <div class="field"><label for="bPCity">City <span class="req">*</span></label><input id="bPCity" class="input" name="pickupCity" list="cityList" value="Chicago, USA" required><span class="field-error"></span></div>
+                <div class="field"><label for="bPAddr">Street address <span class="req">*</span></label><input id="bPAddr" class="input" name="pickupAddress" placeholder="1200 W Fulton Market" required autocomplete="street-address"><span class="field-error"></span></div>
+                <div class="field"><label for="bPName">Contact name <span class="req">*</span></label><input id="bPName" class="input" name="pickupContact" required autocomplete="name"><span class="field-error"></span></div>
+                <div class="field"><label for="bPPhone">Phone <span class="req">*</span></label><input id="bPPhone" class="input" type="tel" name="pickupPhone" placeholder="+1 312 555 0142" required autocomplete="tel"><span class="field-error"></span></div>
+                <div class="field"><label for="bPEmail">Email for confirmation <span class="req">*</span></label><input id="bPEmail" class="input" type="email" name="pickupEmail" required autocomplete="email"><span class="field-error"></span></div>
+                <div class="field"><label for="bCompany">Company</label><input id="bCompany" class="input" name="company" autocomplete="organization"></div>
+              </div>
+              <h3 class="bk-sub"><i data-icon="flag"></i>Delivery</h3>
+              <div class="form-grid">
+                <div class="field"><label for="bDCity">City <span class="req">*</span></label><input id="bDCity" class="input" name="deliveryCity" list="cityList" placeholder="Dallas, USA" required><span class="field-error"></span></div>
+                <div class="field"><label for="bDAddr">Street address <span class="req">*</span></label><input id="bDAddr" class="input" name="deliveryAddress" placeholder="4801 Wright Blvd" required><span class="field-error"></span></div>
+                <div class="field"><label for="bDName">Receiver name <span class="req">*</span></label><input id="bDName" class="input" name="deliveryContact" required><span class="field-error"></span></div>
+                <div class="field"><label for="bDPhone">Receiver phone <span class="req">*</span></label><input id="bDPhone" class="input" type="tel" name="deliveryPhone" required><span class="field-error"></span></div>
+              </div>
+            </fieldset>
+
+            <!-- STEP 3 -->
+            <fieldset class="bk-step" hidden style="border:0">
+              <h2>Vehicle selection</h2>
+              <p>Choose a transportation mode. For road freight we recommend a vehicle based on your total weight.</p>
+              <div class="option-grid mode-tiles" role="radiogroup" aria-label="Transportation mode">
+                <label class="option-tile"><input type="radio" name="mode" value="road" checked><span class="tile"><i data-icon="truck"></i><strong>Road</strong><span>1–5 days, door-to-door</span></span></label>
+                <label class="option-tile"><input type="radio" name="mode" value="air"><span class="tile"><i data-icon="plane"></i><strong>Air</strong><span>1–3 days worldwide</span></span></label>
+                <label class="option-tile"><input type="radio" name="mode" value="ocean"><span class="tile"><i data-icon="ship"></i><strong>Ocean</strong><span>14–35 days, lowest cost</span></span></label>
+                <label class="option-tile"><input type="radio" name="mode" value="rail"><span class="tile"><i data-icon="train"></i><strong>Rail</strong><span>3–9 days, low carbon</span></span></label>
+              </div>
+              <div id="vehicleWrap">
+                <h3 class="bk-sub"><i data-icon="truck"></i>Vehicle type <span class="xs muted" id="bkWeightNote" style="font-weight:500"></span></h3>
+                <div class="option-grid" id="vehicleTiles" role="radiogroup" aria-label="Vehicle type"></div>
+              </div>
+            </fieldset>
+
+            <!-- STEP 4 -->
+            <fieldset class="bk-step" hidden style="border:0">
+              <h2>Schedule</h2>
+              <p>Pick a pickup date and time window. Dots mark days with limited capacity.</p>
+              <div class="schedule-grid">
+                <div id="pickupCalendar" aria-label="Pickup date calendar"></div>
+                <div>
+                  <div class="field"><label for="bDate">Pickup date <span class="req">*</span></label><input id="bDate" class="input" type="date" name="pickupDate" data-min-today required><span class="field-error"></span></div>
+                  <div class="field mt-2"><label for="bWindow">Pickup window</label><select id="bWindow" class="select" name="window"><option>Morning (8am–12pm)</option><option>Afternoon (12pm–4pm)</option><option>Evening (4pm–8pm)</option></select></div>
+                  <h3 class="bk-sub"><i data-icon="zap"></i>Delivery priority</h3>
+                  <div class="option-grid" role="radiogroup" aria-label="Delivery priority" style="grid-template-columns:1fr 1fr">
+                    <label class="option-tile"><input type="radio" name="priority" value="Standard" checked><span class="tile"><strong>Standard</strong><span>Best value</span></span></label>
+                    <label class="option-tile"><input type="radio" name="priority" value="Express"><span class="tile"><strong>Express</strong><span>+35%</span></span></label>
+                    <label class="option-tile"><input type="radio" name="priority" value="Same Day"><span class="tile"><strong>Same Day</strong><span>+75%</span></span></label>
+                    <label class="option-tile"><input type="radio" name="priority" value="Urgent"><span class="tile"><strong>Urgent</strong><span>+110%</span></span></label>
+                  </div>
+                  <div class="field mt-2"><label for="bNotes">Driver notes</label><textarea id="bNotes" class="textarea" name="notes" style="min-height:90px" placeholder="Dock number, gate code, appointment reference…"></textarea></div>
+                </div>
+              </div>
+            </fieldset>
+
+            <!-- STEP 5 -->
+            <fieldset class="bk-step" hidden style="border:0">
+              <h2>Price &amp; payment</h2>
+              <p>All-in price including fuel, handling, insurance and tax. No hidden accessorials.</p>
+              <div id="priceBreakdown"></div>
+              <div class="promo-row"><label for="bPromo" class="sr-only">Promo code</label><input id="bPromo" class="input" name="promo" placeholder="Promo code (try NORTH10)"><button type="button" class="btn btn-ghost" id="promoBtn">Apply</button></div>
+              <h3 class="bk-sub"><i data-icon="card"></i>Payment method</h3>
+              <div class="option-grid pay-tiles" role="radiogroup" aria-label="Payment method">
+                <label class="option-tile"><input type="radio" name="payment" value="card" checked><span class="tile"><i data-icon="card"></i><strong>Card</strong><span>Visa, Mastercard, Amex</span></span></label>
+                <label class="option-tile"><input type="radio" name="payment" value="invoice"><span class="tile"><i data-icon="receipt"></i><strong>Invoice</strong><span>Net 30 for business accounts</span></span></label>
+                <label class="option-tile"><input type="radio" name="payment" value="wallet"><span class="tile"><i data-icon="wallet"></i><strong>NorthLane Wallet</strong><span>Prepaid credit balance</span></span></label>
+              </div>
+              <div class="field mt-3"><label class="check"><input type="checkbox" name="terms" required data-msg="Please accept the terms to continue.">I agree to the NorthLane Terms of Carriage and cancellation policy.</label><span class="field-error"></span></div>
+            </fieldset>
+
+            <!-- STEP 6 -->
+            <fieldset class="bk-step" hidden style="border:0">
+              <div id="bkConfirm" aria-live="polite"></div>
+            </fieldset>
+
+            <div class="bk-nav" id="bkNav">
+              <button type="button" class="btn btn-ghost" id="bkPrev"><i data-icon="arrow-left"></i>Back</button>
+              <button type="button" class="btn" id="bkNext">Continue<i data-icon="arrow-right"></i></button>
+            </div>
+          </form>
+        </div>
+
+        <aside class="bk-aside" aria-label="Booking summary">
+          <div class="card">
+            <div class="card-head"><h2 class="h3">Booking summary</h2><span class="badge badge-accent no-dot">Draft saved</span></div>
+            <div id="bookingSummary" aria-live="polite"></div>
+          </div>
+          <div class="card card-sm">
+            <ul class="icon-list">
+              <li><span class="icon-box sm success"><i data-icon="shield-check"></i></span><div><h4>Insured by default</h4><p>Up to $100,000 cargo cover.</p></div></li>
+              <li><span class="icon-box sm"><i data-icon="refresh"></i></span><div><h4>Free cancellation</h4><p>Until 4 hours before pickup.</p></div></li>
+              <li><span class="icon-box sm accent"><i data-icon="headset"></i></span><div><h4>Need help?</h4><p><a href="tel:+18005550148">+1 (800) 555-0148</a></p></div></li>
+            </ul>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js" defer></script>
+  <script src="js/icons.js" defer></script>
+  <script src="js/data.js" defer></script>
+  <script src="js/notifications.js" defer></script>
+  <script src="js/navbar.js" defer></script>
+  <script src="js/animations.js" defer></script>
+  <script src="js/calculator.js" defer></script>
+  <script src="js/booking.js" defer></script>
+  <script src="js/main.js" defer></script>
+</body>
+</html>

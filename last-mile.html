@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Last-Mile Delivery · Same-Day &amp; Scheduled Doorstep Delivery | NorthLane</title>
+  <meta name="description" content="Last-mile delivery with live driver location, 30-minute ETA windows, photo proof of delivery and e-commerce integrations. Same-day, scheduled and local delivery.">
+  <meta name="theme-color" content="#07111F">
+  <meta property="og:title" content="Last-Mile Delivery · Same-Day &amp; Scheduled Doorstep Delivery | NorthLane">
+  <meta property="og:description" content="Last-mile delivery with live driver location, 30-minute ETA windows, photo proof of delivery and e-commerce integrations. Same-day, scheduled and local delivery.">
+  <meta property="og:image" content="assets/images/logistics/parcel-handover.jpg">
+  <link rel="preload" as="image" href="assets/images/stackly-logo.webp" fetchpriority="high">
+  <link rel="icon" href="assets/icons/favicon.png" type="image/png">
+  <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/services.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <script>document.documentElement.classList.add('nl-loading');try{if(JSON.parse(localStorage.getItem('nl_prefs')||'{}').theme==='light')document.documentElement.setAttribute('data-theme','light')}catch(e){}</script>
+</head>
+<body data-page="last-mile">
+<div id="site-header"></div>
+
+  <main id="main">
+    <section class="page-hero theme-dark" aria-labelledby="pageTitle">
+      <img class="bg-img" src="assets/images/logistics/parcel-handover.jpg" alt="" data-parallax="0.15">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="Breadcrumb"><a href="index.html">Home</a><i data-icon="chevron-right"></i><a href="services.html">Services</a><i data-icon="chevron-right"></i><span aria-current="page">Last-Mile Delivery</span></nav>
+        <span class="eyebrow mt-3">Last-mile delivery</span>
+        <h1 id="pageTitle">The last mile, delivered the way customers expect</h1>
+        <p class="lead">Live driver location, 30-minute arrival windows and photo proof of delivery — in 18 metro areas with electric vans.</p>
+        <div class="hero-actions"><a class="btn btn-accent btn-lg" href="book-shipment.html"><i data-icon="home"></i>Schedule Delivery</a><a class="btn btn-ghost btn-lg" href="#live"><i data-icon="navigation"></i>Watch a live route</a></div>
+        <div class="hero-meta"><div><strong>96.2%</strong><span>First-attempt success</span></div><div><strong>30 min</strong><span>ETA windows</span></div><div><strong>18</strong><span>EV-served metros</span></div></div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="subTitle">
+      <div class="container">
+        <div class="section-head" data-aos="fade-up"><span class="eyebrow">Delivery options</span><h2 id="subTitle">Six ways to reach your customer's door</h2></div>
+        <div class="grid grid-3">
+          <article class="card card-hover feature-card" data-aos="fade-up"><span class="icon-box accent"><i data-icon="zap"></i></span><h3>Same-Day Delivery</h3><p>Order by 2 pm, delivered by 9 pm across 18 metro areas.</p></article>
+          <article class="card card-hover feature-card" data-aos="fade-up" data-aos-delay="80"><span class="icon-box"><i data-icon="calendar"></i></span><h3>Scheduled Delivery</h3><p>Customers choose a 2-hour slot up to 14 days ahead, including evenings and Saturdays.</p></article>
+          <article class="card card-hover feature-card" data-aos="fade-up" data-aos-delay="160"><span class="icon-box"><i data-icon="home"></i></span><h3>Doorstep Delivery</h3><p>Safe-place instructions, building access codes and leave-with-neighbour options.</p></article>
+          <article class="card card-hover feature-card" data-aos="fade-up"><span class="icon-box"><i data-icon="cart"></i></span><h3>E-Commerce Delivery</h3><p>Shopify, WooCommerce and Magento plug-ins create labels and tracking pages automatically.</p></article>
+          <article class="card card-hover feature-card" data-aos="fade-up" data-aos-delay="80"><span class="icon-box"><i data-icon="map-pin"></i></span><h3>Local Delivery</h3><p>Store-to-door and B2B runs within a city, dispatched in under 30 minutes.</p></article>
+          <article class="card card-hover feature-card" data-aos="fade-up" data-aos-delay="160"><span class="icon-box success"><i data-icon="check-circle"></i></span><h3>Delivery Confirmation</h3><p>Photo, GPS stamp and e-signature, shared with you and your customer instantly.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="live" aria-labelledby="liveTitle">
+      <div class="container">
+        <div class="section-head" data-aos="fade-up"><span class="eyebrow">Live route</span><h2 id="liveTitle">An electric van on its Chicago run</h2><p>Eight stops, one optimized route. Watch the driver location, stops remaining and ETA update as each delivery is confirmed.</p></div>
+        <div class="lm-grid" data-aos="fade-up">
+          <div class="lm-map"><div class="leaflet-holder" id="lmMap" aria-label="Live map of a last-mile delivery route in Chicago"></div><div class="map-legend"><span><i style="background:#8A6CF0;border-radius:3px"></i>Depot</span><span><i style="background:#fff;border:2px solid #00AEEF"></i>Delivery stop</span><span><i style="background:#FFB000"></i>Driver</span></div></div>
+          <div class="lm-panel">
+            <div class="flex-between"><div><span class="xs muted">Route CHI-EV-14 · Driver Mei Tanaka</span><h3 class="h3">Delivery Status: <span class="text-primary" id="lmStatus">Out for Delivery</span></h3></div><span class="live-pill"><span class="live-dot"></span>Live</span></div>
+            <div class="live-kpis">
+              <div><span>Stops remaining</span><strong id="lmStops">8 of 8</strong></div>
+              <div><span>Next ETA</span><strong id="lmEta">—</strong></div>
+              <div><span>Customer</span><strong id="lmCustomer" style="font-size:.95rem">—</strong></div>
+              <div><span>Progress</span><strong id="lmDelivered" style="font-size:.95rem">0 delivered</strong></div>
+            </div>
+            <p class="small"><i data-icon="map-pin" class="text-accent"></i> Customer Address: <strong id="lmAddr">—</strong></p>
+            <div class="stop-list" id="stopList" aria-live="polite"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="expTitle">
+      <div class="container split">
+        <div data-aos="fade-right">
+          <span class="eyebrow">Customer experience</span>
+          <h2 id="expTitle" class="mt-2">Fewer "where is my order?" calls</h2>
+          <p class="mt-2">Every recipient gets a branded tracking link with the driver's live position, a 30-minute window and the option to redirect or reschedule — which is why WISMO tickets fall by half after customers switch to NorthLane.</p>
+          <div class="grid grid-2 mt-3">
+            <div class="card card-sm"><div class="stat-mini"><span class="num"><span data-count="52" data-suffix="%">0</span></span><span class="lbl">Fewer WISMO tickets</span></div></div>
+            <div class="card card-sm"><div class="stat-mini"><span class="num"><span data-count="4.8" data-decimals="1">0</span>/5</span><span class="lbl">Recipient rating</span></div></div>
+          </div>
+        </div>
+        <div class="detail-media" data-aos="fade-left">
+          <div class="media-frame"><img src="assets/images/fleet/delivery-van-loading.jpg" alt="Courier loading parcels into a delivery van" loading="lazy"></div>
+          <div class="float-stat right"><span class="icon-box accent"><i data-icon="battery"></i></span><div><strong>72%</strong><span>Lower emissions with EV vans</span></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-sm">
+      <div class="container">
+        <div class="cta-band theme-dark" data-aos="zoom-in">
+          <img class="bg-img" src="assets/images/logistics/parcels.jpg" alt="" loading="lazy">
+          <div class="cta-inner"><div><h2>Connect your store in 10 minutes</h2><p>Install our plug-in, map your shipping rules and your next order ships with live tracking.</p></div><div class="flex flex-wrap"><a class="btn btn-accent btn-lg" href="register.html"><i data-icon="cart"></i>Create account</a><a class="btn btn-ghost btn-lg" href="contact.html">Talk to sales</a></div></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js" defer></script>
+  <script src="js/icons.js" defer></script>
+  <script src="js/data.js" defer></script>
+  <script src="js/notifications.js" defer></script>
+  <script src="js/navbar.js" defer></script>
+  <script src="js/animations.js" defer></script>
+  <script src="js/tracking.js" defer></script>
+  <script src="js/services.js" defer></script>
+  <script src="js/main.js" defer></script>
+</body>
+</html>

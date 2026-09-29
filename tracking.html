@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Track Shipment · Live GPS Tracking | NorthLane Logistics</title>
+  <meta name="description" content="Track any NorthLane shipment in real time: live vehicle position on the map, ETA, distance remaining, driver, status timeline and delivery updates.">
+  <meta name="theme-color" content="#07111F">
+  <meta property="og:title" content="Track Shipment · Live GPS Tracking | NorthLane Logistics">
+  <meta property="og:description" content="Track any NorthLane shipment in real time: live vehicle position on the map, ETA, distance remaining, driver, status timeline and delivery updates.">
+  <meta property="og:image" content="assets/images/hero/hero-truck-night.jpg">
+  <link rel="preload" as="image" href="assets/images/stackly-logo.webp" fetchpriority="high">
+  <link rel="icon" href="assets/icons/favicon.png" type="image/png">
+  <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/tracking.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <script>document.documentElement.classList.add('nl-loading');try{if(JSON.parse(localStorage.getItem('nl_prefs')||'{}').theme==='light')document.documentElement.setAttribute('data-theme','light')}catch(e){}</script>
+</head>
+<body data-page="tracking">
+<div id="site-header"></div>
+
+  <main id="main">
+    <section class="page-hero theme-dark" aria-labelledby="pageTitle">
+      <img class="bg-img" src="assets/images/backgrounds/container-grid.jpg" alt="" fetchpriority="high">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="Breadcrumb"><a href="index.html">Home</a><i data-icon="chevron-right"></i><span aria-current="page">Shipment Tracking</span></nav>
+        <h1 id="pageTitle">Track your shipment in real time</h1>
+        <p class="lead">Live GPS position, predictive ETA and every scan from pickup to proof of delivery — updated every few seconds.</p>
+        <div class="track-hero-form">
+          <form class="track-form" id="trackPageForm" role="search" aria-label="Track a shipment">
+            <label for="trackInput" class="sr-only">Enter Tracking ID</label>
+            <div class="input-icon"><i data-icon="package"></i><input id="trackInput" class="input" name="tracking" placeholder="Enter Tracking ID  ·  e.g. TRK-2026-45821" autocomplete="off" spellcheck="false"></div>
+            <button class="btn btn-accent btn-lg" type="submit"><i data-icon="search"></i>Track Shipment</button>
+          </form>
+          <div class="track-samples"><span>Demo IDs:</span>
+            <button type="button" data-sample="TRK-2026-45821">TRK-2026-45821</button>
+            <button type="button" data-sample="TRK-2026-73942">TRK-2026-73942</button>
+            <button type="button" data-sample="TRK-2026-90112">TRK-2026-90112</button>
+            <button type="button" data-sample="TRK-2026-38210">TRK-2026-38210</button>
+            <button type="button" data-sample="TRK-2026-57314">TRK-2026-57314</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-sm">
+      <div class="container">
+        <div class="card track-empty" id="trackEmpty">
+          <span class="icon-box"><i data-icon="navigation"></i></span>
+          <h2 class="h3">Enter a tracking ID to see your shipment live</h2>
+          <p class="mt-1">Tracking IDs look like <strong>TRK-2026-45821</strong>. You can also paste a booking reference (NL-BK-…) from your confirmation email.</p>
+        </div>
+
+        <div class="track-layout hidden" id="trackLayout" aria-live="polite">
+          <div class="card track-map-card">
+            <div class="tm-head">
+              <h2 id="mapTitle">Live route</h2>
+              <div class="flex flex-wrap">
+                <span class="live-pill"><span class="live-dot"></span>Live</span>
+                <button class="btn btn-ghost btn-xs" id="followBtn" aria-pressed="false"><i data-icon="navigation"></i>Follow vehicle</button>
+                <button class="btn btn-ghost btn-xs" id="fitBtn"><i data-icon="map"></i>Full route</button>
+              </div>
+            </div>
+            <div class="track-map">
+              <div class="leaflet-holder" id="trackMap" aria-label="Live shipment map"></div>
+              <div class="map-legend"><span><i style="background:#22C55E"></i>Origin</span><span><i style="background:#FFB000"></i>Destination</span><span><i style="background:#0D1B2A;border:2px solid #00AEEF"></i>Distribution center</span><span><i style="background:#8A6CF0;border-radius:3px"></i>Warehouse</span><span><i style="background:#F59E0B;border-radius:2px;height:4px"></i>Traffic</span></div>
+            </div>
+            <div style="padding:18px 20px;border-top:1px solid var(--line)">
+              <div class="card-head" style="margin-bottom:12px"><h3 class="h3">Live activity</h3><span class="xs muted">GPS &amp; scan events</span></div>
+              <div class="track-feed" id="trackFeed"></div>
+            </div>
+          </div>
+          <div class="track-panel" id="trackPanel"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-sm" style="padding-top:0">
+      <div class="container track-side-lists">
+        <div class="card">
+          <div class="card-head"><h2 class="h3">Active shipments</h2><span class="live-pill"><span class="live-dot"></span>Live</span></div>
+          <div class="active-list" id="activeShipments"></div>
+        </div>
+        <div class="stack track-side-col">
+          <div class="card">
+            <div class="card-head"><h2 class="h3">Recent searches</h2></div>
+            <div class="flex flex-wrap" id="recentList"></div>
+          </div>
+          <div class="card">
+            <div class="card-head"><h2 class="h3">Need help with a shipment?</h2></div>
+            <ul class="icon-list">
+              <li><span class="icon-box sm"><i data-icon="headset"></i></span><div><h4>24/7 tracking desk</h4><p><a href="tel:+18005550148">+1 (800) 555-0148</a> · average answer time 42 seconds</p></div></li>
+              <li><span class="icon-box sm accent"><i data-icon="bell"></i></span><div><h4>Proactive alerts</h4><p>Sign in to receive SMS and email updates for every status change.</p></div></li>
+              <li><span class="icon-box sm success"><i data-icon="file"></i></span><div><h4>Proof of delivery</h4><p>Photo, GPS stamp and e-signature available the moment freight is delivered.</p></div></li>
+            </ul>
+          </div>
+          <div class="card track-quick">
+            <div class="card-head"><h2 class="h3">Quick actions</h2></div>
+            <div class="tq-grid">
+              <a class="tq-item" href="shipping-calculator.html"><span class="icon-box sm"><i data-icon="percent"></i></span><div><strong>Get a quote</strong><span>Instant multimodal pricing</span></div><i data-icon="chevron-right"></i></a>
+              <a class="tq-item" href="book-shipment.html"><span class="icon-box sm accent"><i data-icon="package"></i></span><div><strong>Book a shipment</strong><span>Six quick steps, live price</span></div><i data-icon="chevron-right"></i></a>
+              <a class="tq-item" href="shipment-details.html?id=TRK-2026-45821"><span class="icon-box sm success"><i data-icon="file"></i></span><div><strong>Shipment details</strong><span>Timeline, documents &amp; POD</span></div><i data-icon="chevron-right"></i></a>
+              <a class="tq-item" href="contact.html"><span class="icon-box sm"><i data-icon="message"></i></span><div><strong>Report an issue</strong><span>Delays, damage or claims</span></div><i data-icon="chevron-right"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js" defer></script>
+  <script src="js/icons.js" defer></script>
+  <script src="js/data.js" defer></script>
+  <script src="js/notifications.js" defer></script>
+  <script src="js/navbar.js" defer></script>
+  <script src="js/animations.js" defer></script>
+  <script src="js/tracking.js" defer></script>
+  <script src="js/main.js" defer></script>
+</body>
+</html>
