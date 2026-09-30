@@ -85,9 +85,28 @@
     });
     const plan = U.param('plan');
     if (plan) form.role.value = 'business';
+    /* Full name: letters only (any alphabet), plus space, hyphen, apostrophe and dot — digits and symbols are stripped as you type or paste */
+    const nameInput = form.name;
+    const NOT_NAME = /[^\p{L}\s'.-]/gu;
+    const HAS_BAD = /[^\p{L}\s'.-]/u;
+    const nameField = nameInput.closest('.field');
+    const showNameError = (msg) => { nameField.classList.add('invalid'); nameField.querySelector('.field-error').textContent = msg; nameInput.setAttribute('aria-invalid', 'true'); };
+    nameInput.addEventListener('input', () => {
+      if (!HAS_BAD.test(nameInput.value)) return;
+      const pos = nameInput.selectionStart - (nameInput.value.slice(0, nameInput.selectionStart).match(NOT_NAME) || []).length;
+      nameInput.value = nameInput.value.replace(NOT_NAME, '');
+      nameInput.setSelectionRange(pos, pos);
+      showNameError('Name can contain letters only — numbers and symbols aren\'t allowed.');
+    });
     form.addEventListener('submit', (e) => {
       e.preventDefault();
       if (!LX.validate(form)) { LX.toast('Please check the form', 'Some fields need your attention.', 'error'); return; }
+      if (!/^\p{L}[\p{L}\s'.-]*\p{L}\.?$/u.test(nameInput.value.trim()) || (nameInput.value.match(/\p{L}/gu) || []).length < 2) {
+        showNameError('Please enter your full name using letters only.');
+        nameInput.focus();
+        LX.toast('Please check the form', 'Name can contain letters only.', 'error');
+        return;
+      }
       const email = form.email.value.trim().toLowerCase();
       if (users().some((u) => u.email.toLowerCase() === email)) {
         const f = form.email.closest('.field');
